@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FinancialCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="303" height="315"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="303" height="315"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="13_6748_3100.png" translatesAutoresizingMaskIntoConstraints="NO" id="QZN-CW-9Ha">
+                        <rect key="frame" x="103.5" y="12" width="96" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="52" id="VGV-aH-IxH"/>
+                            <constraint firstAttribute="width" constant="96" id="xL5-nS-NpH"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奥迪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYX-a1-xGi">
+                        <rect key="frame" x="134" y="69" width="35" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全新零利息、零首付" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-HO-bFD">
+                        <rect key="frame" x="10" y="92" width="283" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 X 36期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVi-z5-aVd">
+                        <rect key="frame" x="108" y="108.5" width="86" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在申请" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xZ-wS-WoU">
+                        <rect key="frame" x="243.5" y="288.5" width="49.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xx人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arg-rc-xlr">
+                        <rect key="frame" x="218.5" y="288.5" width="25" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="QZN-CW-9Ha" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="0qK-ET-Am5"/>
+                <constraint firstItem="1xZ-wS-WoU" firstAttribute="leading" secondItem="arg-rc-xlr" secondAttribute="trailing" id="7ar-F8-xeO"/>
+                <constraint firstAttribute="trailing" secondItem="1xZ-wS-WoU" secondAttribute="trailing" constant="10" id="GL9-F8-Cx7"/>
+                <constraint firstAttribute="bottom" secondItem="1xZ-wS-WoU" secondAttribute="bottom" constant="12" id="IC4-N5-upT"/>
+                <constraint firstAttribute="trailing" secondItem="Q6f-HO-bFD" secondAttribute="trailing" constant="10" id="KU0-6Z-ngD"/>
+                <constraint firstItem="Q6f-HO-bFD" firstAttribute="top" secondItem="KYX-a1-xGi" secondAttribute="bottom" constant="2" id="Pv7-Dp-VzX"/>
+                <constraint firstItem="KYX-a1-xGi" firstAttribute="top" secondItem="QZN-CW-9Ha" secondAttribute="bottom" constant="5" id="S4i-8D-Tsx"/>
+                <constraint firstItem="kVi-z5-aVd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VRL-jB-dh5"/>
+                <constraint firstItem="KYX-a1-xGi" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Xue-C9-iFY"/>
+                <constraint firstItem="1xZ-wS-WoU" firstAttribute="top" secondItem="arg-rc-xlr" secondAttribute="top" id="aco-RD-wht"/>
+                <constraint firstItem="Q6f-HO-bFD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eZm-qB-bNL"/>
+                <constraint firstItem="Q6f-HO-bFD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="mjT-7d-Pd5"/>
+                <constraint firstItem="QZN-CW-9Ha" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="sIM-za-Xas"/>
+                <constraint firstItem="kVi-z5-aVd" firstAttribute="top" secondItem="Q6f-HO-bFD" secondAttribute="bottom" constant="2" id="tkP-e2-zbI"/>
+            </constraints>
+            <size key="customSize" width="303" height="315"/>
+            <point key="canvasLocation" x="84.5" y="64.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="13_6748_3100.png" width="512" height="512"/>
+    </resources>
+</document>

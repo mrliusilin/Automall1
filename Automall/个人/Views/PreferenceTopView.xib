@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="piQ-CZ-BeK" customClass="PreferenceTopView">
+            <rect key="frame" x="0.0" y="0.0" width="463" height="224"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kz2-dV-a16" customClass="ImageAndTileButton">
+                    <rect key="frame" x="0.0" y="184" width="231" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="yOo-0S-0e0"/>
+                    </constraints>
+                    <state key="normal" title="购物车" image="管家选中.png">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="shoppingCar:" destination="piQ-CZ-BeK" eventType="touchUpInside" id="Vn9-CQ-ivs"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fan-aK-KjC" customClass="ImageAndTileButton">
+                    <rect key="frame" x="232" y="184" width="231" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="优惠券" image="管家选中.png">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="coupon:" destination="piQ-CZ-BeK" eventType="touchUpInside" id="j9L-Ae-osS"/>
+                    </connections>
+                </button>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Bf-wB-fff">
+                    <rect key="frame" x="0.0" y="0.0" width="463" height="184"/>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="13_6736_3104.png" translatesAutoresizingMaskIntoConstraints="NO" id="7lt-uz-JGw">
+                    <rect key="frame" x="20" y="62.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="7lt-uz-JGw" secondAttribute="height" multiplier="1:1" id="0an-4n-GNq"/>
+                        <constraint firstAttribute="width" constant="60" id="lff-8V-eVG"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhX-gX-3OB">
+                    <rect key="frame" x="100" y="62" width="62" height="30"/>
+                    <state key="normal" title="点击登陆">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="login:" destination="piQ-CZ-BeK" eventType="touchUpInside" id="bAa-9Z-56N"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGR-iM-di4">
+                    <rect key="frame" x="100" y="92.5" width="62" height="30"/>
+                    <state key="normal" title="会员特权">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="privilege:" destination="piQ-CZ-BeK" eventType="touchUpInside" id="rIn-bP-XO4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1y3-nH-jmR" customClass="ImageAndTileButton">
+                    <rect key="frame" x="363" y="72" width="80" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Wso-Ne-xLh"/>
+                        <constraint firstAttribute="width" constant="80" id="oTY-PB-gP1"/>
+                    </constraints>
+                    <state key="normal" title="个人信息修改" image="选车选中.png">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="edit:" destination="piQ-CZ-BeK" eventType="touchUpInside" id="c2t-o3-eBB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="3Bf-wB-fff" firstAttribute="leading" secondItem="piQ-CZ-BeK" secondAttribute="leading" id="5dE-d7-rX5"/>
+                <constraint firstItem="ZhX-gX-3OB" firstAttribute="top" secondItem="7lt-uz-JGw" secondAttribute="top" id="6qY-9g-V9z"/>
+                <constraint firstItem="7lt-uz-JGw" firstAttribute="leading" secondItem="piQ-CZ-BeK" secondAttribute="leading" constant="20" id="808-tl-DK7"/>
+                <constraint firstItem="3Bf-wB-fff" firstAttribute="top" secondItem="piQ-CZ-BeK" secondAttribute="top" id="8h8-Kg-wPs"/>
+                <constraint firstAttribute="trailing" secondItem="fan-aK-KjC" secondAttribute="trailing" id="Cwi-2n-3lO"/>
+                <constraint firstItem="1y3-nH-jmR" firstAttribute="centerY" secondItem="3Bf-wB-fff" secondAttribute="centerY" id="GIR-ak-X7j"/>
+                <constraint firstItem="kz2-dV-a16" firstAttribute="leading" secondItem="piQ-CZ-BeK" secondAttribute="leading" id="KQv-ON-tO7"/>
+                <constraint firstItem="ZhX-gX-3OB" firstAttribute="leading" secondItem="7lt-uz-JGw" secondAttribute="trailing" constant="20" id="Kdx-GC-3Zt"/>
+                <constraint firstAttribute="trailing" secondItem="1y3-nH-jmR" secondAttribute="trailing" constant="20" id="UfH-T5-09y"/>
+                <constraint firstItem="VGR-iM-di4" firstAttribute="leading" secondItem="ZhX-gX-3OB" secondAttribute="leading" id="W5x-xd-wX7"/>
+                <constraint firstItem="fan-aK-KjC" firstAttribute="width" secondItem="kz2-dV-a16" secondAttribute="width" id="bbB-CZ-rGX"/>
+                <constraint firstItem="fan-aK-KjC" firstAttribute="top" secondItem="3Bf-wB-fff" secondAttribute="bottom" id="dUr-pM-5c7"/>
+                <constraint firstItem="fan-aK-KjC" firstAttribute="top" secondItem="kz2-dV-a16" secondAttribute="top" id="dfY-6i-Gl5"/>
+                <constraint firstAttribute="bottom" secondItem="fan-aK-KjC" secondAttribute="bottom" id="jn4-Cb-2MF"/>
+                <constraint firstAttribute="bottom" secondItem="kz2-dV-a16" secondAttribute="bottom" id="kbq-78-YWg"/>
+                <constraint firstAttribute="trailing" secondItem="3Bf-wB-fff" secondAttribute="trailing" id="nB5-Oj-jnL"/>
+                <constraint firstItem="7lt-uz-JGw" firstAttribute="centerY" secondItem="3Bf-wB-fff" secondAttribute="centerY" id="p0f-Kt-V6J"/>
+                <constraint firstItem="VGR-iM-di4" firstAttribute="bottom" secondItem="7lt-uz-JGw" secondAttribute="bottom" id="sgT-6g-ur1"/>
+                <constraint firstItem="fan-aK-KjC" firstAttribute="leading" secondItem="kz2-dV-a16" secondAttribute="trailing" constant="1" id="w95-zN-BfR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="couponButton" destination="fan-aK-KjC" id="4rF-Bm-IMB"/>
+                <outlet property="editInfoButton" destination="1y3-nH-jmR" id="TyG-Q1-PCd"/>
+                <outlet property="headerImageView" destination="7lt-uz-JGw" id="kgb-Ys-ZDg"/>
+                <outlet property="loginOrNameButton" destination="ZhX-gX-3OB" id="uaa-bo-C4L"/>
+                <outlet property="privilegeButton" destination="VGR-iM-di4" id="YOJ-Ka-7qK"/>
+                <outlet property="shoppingCarButton" destination="kz2-dV-a16" id="E6v-xU-X11"/>
+            </connections>
+            <point key="canvasLocation" x="113.5" y="-244"/>
+        </view>
+        <view contentMode="scaleToFill" id="mTf-zG-7Sm" customClass="orderView">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuK-qc-k8U">
+                    <rect key="frame" x="0.0" y="0.0" width="450" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9S-Cz-vgR">
+                            <rect key="frame" x="20" y="10" width="70" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="s9S-Cz-vgR" firstAttribute="centerY" secondItem="kuK-qc-k8U" secondAttribute="centerY" id="3b1-fW-Htw"/>
+                        <constraint firstAttribute="height" constant="40" id="heb-fj-P7x"/>
+                        <constraint firstItem="s9S-Cz-vgR" firstAttribute="leading" secondItem="kuK-qc-k8U" secondAttribute="leading" constant="20" id="qG9-r7-NB1"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-cA-YDB">
+                    <rect key="frame" x="20" y="40" width="410" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="XAc-Zq-rfm"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8uk-Ip-nAi">
+                    <rect key="frame" x="0.0" y="41" width="450" height="157"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gL2-DX-yRf">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FrU-cA-YDB" firstAttribute="leading" secondItem="mTf-zG-7Sm" secondAttribute="leading" constant="20" id="AV7-FO-daG"/>
+                <constraint firstItem="kuK-qc-k8U" firstAttribute="leading" secondItem="mTf-zG-7Sm" secondAttribute="leading" id="FIf-Tu-tsD"/>
+                <constraint firstAttribute="trailing" secondItem="kuK-qc-k8U" secondAttribute="trailing" id="MXB-mH-qBI"/>
+                <constraint firstItem="FrU-cA-YDB" firstAttribute="top" secondItem="kuK-qc-k8U" secondAttribute="bottom" id="QMC-y5-NIo"/>
+                <constraint firstAttribute="bottom" secondItem="8uk-Ip-nAi" secondAttribute="bottom" id="RZN-Lu-DFN"/>
+                <constraint firstAttribute="trailing" secondItem="FrU-cA-YDB" secondAttribute="trailing" constant="20" id="V1l-We-dm7"/>
+                <constraint firstAttribute="trailing" secondItem="8uk-Ip-nAi" secondAttribute="trailing" id="XYR-Hj-PYL"/>
+                <constraint firstItem="8uk-Ip-nAi" firstAttribute="top" secondItem="FrU-cA-YDB" secondAttribute="bottom" id="aBr-c3-gpO"/>
+                <constraint firstItem="8uk-Ip-nAi" firstAttribute="leading" secondItem="mTf-zG-7Sm" secondAttribute="leading" id="fVT-VB-MNp"/>
+                <constraint firstItem="kuK-qc-k8U" firstAttribute="top" secondItem="mTf-zG-7Sm" secondAttribute="top" id="gMH-N6-AAc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="8uk-Ip-nAi" id="we6-YO-Yey"/>
+            </connections>
+            <point key="canvasLocation" x="-69" y="112"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="13_6736_3104.png" width="512" height="512"/>
+        <image name="管家选中.png" width="22" height="22"/>
+        <image name="选车选中.png" width="22" height="22"/>
+    </resources>
+</document>
