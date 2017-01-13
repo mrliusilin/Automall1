@@ -111,8 +111,10 @@
 -(SDCycleScrollView *)cycleScrollView
 {
     if (!_cycleScrollView) {
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_Width, 80) delegate:self placeholderImage:[UIImage imageNamed:@"11_1684_773"]];
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_Width, 80) delegate:self placeholderImage:[UIImage imageNamed:nil]];
+        _cycleScrollView.localizationImageNamesGroup = @[@"guanjia_img_1@2x",@"guanjia_img_2@2x",@"guanjia_img_3@2x"];
         _cycleScrollView.delegate = self;
+        _cycleScrollView.showPageControl = NO;
     }
     return _cycleScrollView;
 }
@@ -166,13 +168,13 @@
         self.sellBTView = [[ServerButton alloc] initWithFrame:CGRectMake(0, 0, _serversView.width / 2 - 0.5, _serversView.height)];
         self.sellBTView.titleLB.text = @"我要卖车";
         self.sellBTView.detailLB.text = @"闲置车辆换掉换新车";
-        self.sellBTView.imgView.image = [UIImage imageNamed:@"11_1684_773"];
+        self.sellBTView.imgView.image = [UIImage imageNamed:@"che_img_7@2x"];
         [_serversView addSubview:self.sellBTView];
         
         self.buyBTView = [[ServerButton alloc] initWithFrame:CGRectMake(_serversView.width / 2 + 0.5, 0, _serversView.width / 2 - 0.5, _serversView.height)];
         self.buyBTView.titleLB.text = @"帮买二手车";
         self.buyBTView.detailLB.text = @"发布求购需求买到称心二手车";
-        self.buyBTView.imgView.image = [UIImage imageNamed:@"11_1684_773"];
+        self.buyBTView.imgView.image = [UIImage imageNamed:@"che_img_8@2x"];
         [_serversView addSubview:self.buyBTView];
     }
     return _serversView;

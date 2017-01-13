@@ -21,6 +21,13 @@
     return [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
 }
 
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+    }
+    return self;
+}
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];

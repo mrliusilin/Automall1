@@ -28,6 +28,8 @@
 @property(nonatomic,strong)UICollectionView * hotBrandCollectionView;
 
 @property(nonatomic,strong)UICollectionView * hotSeriesCollectionView;
+
+@property(nonatomic,strong)NSMutableArray * tableViewIndexArr;
 @end
 
 @implementation GDNewCarViewController
@@ -51,7 +53,7 @@
 {
     if (!_cycleScrollView) {
         _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_Width, 80) delegate:self placeholderImage:[UIImage imageNamed:@"11_1684_773"]];
-        _cycleScrollView.localizationImageNamesGroup = @[[UIImage imageNamed:@"11_1684_773"],[UIImage imageNamed:@"11_1684_774"],[UIImage imageNamed:@"11_1684_775"]];
+        _cycleScrollView.localizationImageNamesGroup = @[@"guanjia_img_1@2x",@"guanjia_img_2@2x",@"guanjia_img_3@2x"];
         _cycleScrollView.autoScrollTimeInterval = 3;
         _cycleScrollView.showPageControl = NO;
     }
@@ -100,6 +102,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.mainTableView];
+    self.tableViewIndexArr = ({
+        NSMutableArray * arr = @[].mutableCopy;
+        unichar cs['Z' - 'A' +1],c;
+        for (c = 'A'; c <= 'Z'; c ++ ) {
+            cs[c - 'A'] = c;
+            [arr addObject:[NSString stringWithFormat:@"%C",c]];
+        }
+        arr;
+    });
+    
     // Do any additional setup after loading the view.
 }
 
@@ -113,7 +125,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return self.tableViewIndexArr.count + 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -124,7 +136,7 @@
             break;
             
         default:
-            return 10;
+            return 4;
             break;
     }
 }
@@ -170,7 +182,7 @@
     if (section == 1) {
         return @"热门车型";
     }
-    return @"1";
+    return self.tableViewIndexArr[section - 2];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

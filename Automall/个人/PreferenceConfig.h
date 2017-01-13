@@ -23,4 +23,6 @@
 //颜色
 #import "MacroColor.h"
 
+#import "UIView+Rect.h"
+
 #endif /* PreferenceConfig_h */

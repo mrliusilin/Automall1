@@ -51,25 +51,25 @@
         _orderButtons  = @[].mutableCopy;
         
         ImageAndTileButton * bt1 = [ImageAndTileButton new];
-        [bt1 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt1 setImage:[UIImage imageNamed:@"btn_personal_4@2x"] forState:UIControlStateNormal];
         [bt1 setTintColor:[UIColor darkTextColor]];
         [bt1 setTitle:@"待付款" forState:UIControlStateNormal];
         [_orderButtons addObject:bt1];
         
         ImageAndTileButton * bt2 = [ImageAndTileButton new];
-        [bt2 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt2 setImage:[UIImage imageNamed:@"btn_personal_5@2x"] forState:UIControlStateNormal];
         [bt2 setTintColor:[UIColor darkTextColor]];
         [bt2 setTitle:@"待收货" forState:UIControlStateNormal];
         [_orderButtons addObject:bt2];
         
         ImageAndTileButton * bt3 = [ImageAndTileButton new];
-        [bt3 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt3 setImage:[UIImage imageNamed:@"btn_personal_6@2x"] forState:UIControlStateNormal];
         [bt3 setTintColor:[UIColor darkTextColor]];
         [bt3 setTitle:@"待安装" forState:UIControlStateNormal];
         [_orderButtons addObject:bt3];
         
         ImageAndTileButton * bt4 = [ImageAndTileButton new];
-        [bt4 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt4 setImage:[UIImage imageNamed:@"btn_personal_7@2x"] forState:UIControlStateNormal];
         [bt4 setTintColor:[UIColor darkTextColor]];
         [bt4 setTitle:@"待评价" forState:UIControlStateNormal];
         [_orderButtons addObject:bt4];
@@ -197,19 +197,19 @@
         _serversButtons = @[].mutableCopy;
         
         ImageAndTileButton * bt1 = [ImageAndTileButton new];
-        [bt1 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt1 setImage:[UIImage imageNamed:@"btn_personal_1@2x"] forState:UIControlStateNormal];
         [bt1 setTintColor:[UIColor darkTextColor]];
         [bt1 setTitle:@"购物车" forState:UIControlStateNormal];
         [_serversButtons addObject:bt1];
         
         ImageAndTileButton * bt2 = [ImageAndTileButton new];
-        [bt2 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt2 setImage:[UIImage imageNamed:@"btn_personal_2@2x"] forState:UIControlStateNormal];
         [bt2 setTintColor:[UIColor darkTextColor]];
         [bt2 setTitle:@"我的车币" forState:UIControlStateNormal];
         [_serversButtons addObject:bt2];
         
         ImageAndTileButton * bt3 = [ImageAndTileButton new];
-        [bt3 setImage:[UIImage imageNamed:@"个人选中@2x"] forState:UIControlStateNormal];
+        [bt3 setImage:[UIImage imageNamed:@"btn_personal_3@2x"] forState:UIControlStateNormal];
         [bt3 setTintColor:[UIColor darkTextColor]];
         [bt3 setTitle:@"充值中心" forState:UIControlStateNormal];
         [_serversButtons addObject:bt3];

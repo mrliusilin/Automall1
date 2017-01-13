@@ -8,6 +8,10 @@
 
 #import "SelectCarMainViewController.h"
 #import "UIView+Rect.h"
+#import "ImageAndTileButton.h"
+
+/**subControllers*/
+#import "CalculatorForCarViewController.h"
 
 /**childController*/
 #import "FinancialViewController.h"
@@ -22,6 +26,8 @@
 
 @property(nonatomic,strong)UITextField * searchText;
 
+@property(nonatomic,strong)ImageAndTileButton * rightItem;
+
 @property(nonatomic,strong)UIScrollView * mainScrollView;
 
 @property(nonatomic,strong)UIView * tagsView;
@@ -35,6 +41,18 @@
 @implementation SelectCarMainViewController
 
 #pragma mark -- lazyLoad
+
+-(ImageAndTileButton *)rightItem
+{
+    if (!_rightItem) {
+        _rightItem = [[ImageAndTileButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [_rightItem setImage:[UIImage imageNamed:@"mes_icon_1@2x"] forState:UIControlStateNormal];
+        [_rightItem setTitle:@"算一算" forState:UIControlStateNormal];
+        [_rightItem setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_rightItem addTarget:self action:@selector(showCalculator:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightItem;
+}
 
 -(NSMutableArray *)tagButtons
 {
@@ -90,7 +108,7 @@
         _searchText = [[UITextField alloc] init];
         _searchText.leftViewMode = UITextFieldViewModeAlways;
         _searchText.layer.cornerRadius = 3;
-        _searchText.bounds = CGRectMake(0, 0, 257, 29);
+        _searchText.bounds = CGRectMake(0, 0, SCREEN_Width - 90, 29);
         _searchText.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"个人选中@2x"]];
         _searchText.placeholder = @"搜索";
         _searchText.tintColor = [UIColor darkTextColor];
@@ -118,17 +136,24 @@
     }
 }
 
+-(void)showCalculator:(UIButton*)sender
+{
+    UIViewController *VC = [CalculatorForCarViewController new];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
+}
+
+#pragma mark -- LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self setHidesBottomBarWhenPushed:YES];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    UIView * statuBarView = [[UIView alloc]initWithFrame:CGRectMake(0, -20, SCREEN_Width, 20)];
-    statuBarView.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar addSubview:statuBarView];
-    
+        
     self.navigationItem.titleView = self.searchText;
     self.navigationController.navigationBar.barTintColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItem];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [self.view addSubview:self.tagsView];
     [self.view addSubview:self.mainScrollView];
@@ -162,6 +187,17 @@
     [self.mainScrollView addSubview:importedCarView];
     
     self.mainScrollView.contentSize = CGSizeMake(self.childViewControllers.count * self.mainScrollView.width, self.mainScrollView.height);
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 
 -(void)viewDidLayoutSubviews

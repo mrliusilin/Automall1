@@ -12,7 +12,7 @@
 
 #define IMAGE_HEIGHT 30
 #define TITLELABLE_HEIGHT ((IMAGE_HEIGHT)/(IMAGEmultipleTITLE))
-#define SEPARETE_HEIGHT 7
+#define SEPARETE_HEIGHT 2
 #define IMAGEmultipleTITLE 2
 
 @interface ImageAndTileButton ()
@@ -28,6 +28,15 @@
 @implementation ImageAndTileButton
 
 @synthesize buttomImageType = _buttomImageType;
+
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    }
+    return self;
+}
 
 -(void)awakeFromNib
 {
@@ -83,7 +92,7 @@
     if (self.imageView.image) {
         self.titleLabel.font = [UIFont systemFontOfSize:self.titleHeight];
     }
-    [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+//    [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
 }
 -(CGFloat)ImgHeight
 {

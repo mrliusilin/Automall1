@@ -10,4 +10,6 @@
 
 @interface PersonalTableViewCell : UITableViewCell
 
+//@property(nonatomic,strong)UILabel * placeholderLB;
+
 @end

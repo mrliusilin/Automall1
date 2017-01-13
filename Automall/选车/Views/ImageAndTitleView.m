@@ -18,6 +18,12 @@
 }
 */
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.imgView.contentMode = UIViewContentModeCenter && UIViewContentModeScaleAspectFit;
+}
+
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {

@@ -33,12 +33,33 @@ const int safeStartTag = 200;
 
 @property(nonatomic,strong)UICollectionView * timeLimitView;
 
+@property(nonatomic,strong) NSMutableArray * brandImgs;
+
+@property(nonatomic,strong) NSMutableArray * safeImgs;
+
 @end
 
 @implementation FinancialViewController
 
 
 #pragma mark -- lazyLoad
+
+-(NSMutableArray *)brandImgs
+{
+    if (!_brandImgs) {
+        _brandImgs = @[@"product_one@2x",@"product_two@2x",@"product_three@2x",@"product_four@2x",@"product_five@2x",@"product_six@2x"].mutableCopy;
+    }
+    return _brandImgs;
+}
+
+-(NSMutableArray *)safeImgs
+{
+    if (!_safeImgs) {
+        _safeImgs = @[@"che_img_1@2x",@"che_img_2@2x",@"che_img_3@2x",@"che_img_4@2x",@"che_img_5@2x"].mutableCopy;
+    }
+    return _safeImgs;
+}
+
 -(UIScrollView *)mainScrollView
 {
     if (!_mainScrollView) {
@@ -52,9 +73,9 @@ const int safeStartTag = 200;
 -(SDCycleScrollView *)iadView
 {
     if (!_iadView) {
-        _iadView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_Width, 80) delegate:self placeholderImage:[UIImage imageNamed:@"animatedTrain_2"]];
+        _iadView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_Width, 80) delegate:self placeholderImage:[UIImage imageNamed:@"che_img_2"]];
         _iadView.delegate = self;
-        _iadView.localizationImageNamesGroup = @[[UIImage imageNamed:@"animatedTrain_2"],[UIImage imageNamed:@"animatedTrain_2"],[UIImage imageNamed:@"animatedTrain_2"]];
+        _iadView.localizationImageNamesGroup = @[@"guanjia_img_1@2x",@"guanjia_img_2@2x",@"guanjia_img_3@2x"];
         _iadView.showPageControl = NO;
     }
     return _iadView;
@@ -86,10 +107,12 @@ const int safeStartTag = 200;
 {
     if (!_brandView) {
         _brandView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, 178)];
-        UIImageView  * imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 120, _brandView.height)];
-        imgV.image = [UIImage imageNamed:@"animatedTrain_2"];
+        
+        UIImageView  * imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 130, _brandView.height)];
+        imgV.image = [UIImage imageNamed:@"che_img_6"];
         imgV.backgroundColor = [UIColor whiteColor];
         imgV.userInteractionEnabled = YES;
+        imgV.contentMode = UIViewContentModeCenter && UIViewContentModeScaleAspectFit;
         [_brandView addSubview:imgV];
         
         imgV.tag = BrandStartTag;
@@ -108,7 +131,7 @@ const int safeStartTag = 200;
         
         for (int index = 0; index < 6; index ++) {
             ImageAndTitleView * v = [[ImageAndTitleView alloc] initWithFrame:CGRectMake(index % 3 * rightView.width / 3, index / 3 * rightView.height / 2, rightView.width / 3, rightView.height / 2)];
-            v.imgView.image = [UIImage imageNamed:@"animatedTrain_2"];
+            v.imgView.image = [UIImage imageNamed:self.brandImgs.count >= index?self.brandImgs[index]:nil];
             v.titleLB.text = @"测试";
             [rightView addSubview:v];
             v.tag = BrandStartTag + 1 + index;
@@ -149,10 +172,11 @@ const int safeStartTag = 200;
         _safeView.backgroundColor = COLOR_SPARELINE_GRAY;
         
         UIImageView  * imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, _safeView.height)];
-        imgV.image = [UIImage imageNamed:@"animatedTrain_2"];
+        imgV.image = [UIImage imageNamed:self.safeImgs.count>0?self.safeImgs[0]:nil];
         imgV.backgroundColor = [UIColor whiteColor];
         imgV.userInteractionEnabled = YES;
         [_safeView addSubview:imgV];
+        imgV.contentMode = UIViewContentModeCenter && UIViewContentModeScaleAspectFit;
         
         imgV.tag = safeStartTag;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picktureTap:)];
@@ -165,13 +189,14 @@ const int safeStartTag = 200;
         
         for (int index = 0; index < 4; index ++) {
             UIImageView * v = [[UIImageView alloc] initWithFrame:CGRectMake(index % 2 * (rightView.width + 1) / 2 , index / 2 * (rightView.height + 1) / 2, (rightView.width - 1) / 2, rightView.height / 2 - 0.5)];
-            v.image = [UIImage imageNamed:@"animatedTrain_2"];
+            v.image = [UIImage imageNamed:self.safeImgs.count >=index?self.safeImgs[index + 1]:nil];
             v.userInteractionEnabled = YES;
             v.backgroundColor = [UIColor whiteColor];
             [rightView addSubview:v];
             v.tag = safeStartTag + 1 + index;
             UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picktureTap:)];
             [v addGestureRecognizer:tap];
+            v.contentMode = UIViewContentModeCenter && UIViewContentModeScaleAspectFit;
         }
         
     }
@@ -214,6 +239,8 @@ const int safeStartTag = 200;
             layout.itemSize = CGSizeMake((_timeLimitView.width - 8 * 4) / 3, _timeLimitView.height - 6 * 2);
             layout;
         })];
+        
+        _timeLimitView.contentInset = UIEdgeInsetsMake(0, 8, 0, 0);
         
         [_timeLimitView registerNib:[UINib nibWithNibName:@"FinancialCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"FinancialCollectionViewCell"];
         

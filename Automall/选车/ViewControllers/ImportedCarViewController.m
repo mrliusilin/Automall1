@@ -199,7 +199,9 @@
 {
     if (!_iadScrollView) {
         _iadScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_Width, 80) delegate:self placeholderImage:[UIImage imageNamed:@"11_1684_773"]];
+        _iadScrollView.localizationImageNamesGroup = @[@"guanjia_img_1@2x",@"guanjia_img_2@2x",@"guanjia_img_3@2x"];
         _iadScrollView.delegate = self;
+        _iadScrollView.showPageControl = NO;
     }
     return _iadScrollView;
 }
