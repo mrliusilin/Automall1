@@ -19,14 +19,15 @@
 #import "ImportedCarViewController.h"
 #import "OldCarViewController.h"
 
-@interface SelectCarMainViewController ()<UIScrollViewDelegate>
+@interface SelectCarMainViewController ()<UIScrollViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
     UIButton * selectedBT;
+    BOOL isEditing;
 }
 
 @property(nonatomic,strong)UITextField * searchText;
 
-@property(nonatomic,strong)ImageAndTileButton * rightItem;
+@property(nonatomic,strong)UIButton * rightItem;
 
 @property(nonatomic,strong)UIScrollView * mainScrollView;
 
@@ -42,12 +43,11 @@
 
 #pragma mark -- lazyLoad
 
--(ImageAndTileButton *)rightItem
+-(UIButton *)rightItem
 {
     if (!_rightItem) {
-        _rightItem = [[ImageAndTileButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [_rightItem setImage:[UIImage imageNamed:@"mes_icon_1@2x"] forState:UIControlStateNormal];
-        [_rightItem setTitle:@"算一算" forState:UIControlStateNormal];
+        _rightItem = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [_rightItem setImage:[UIImage imageNamed:@"nav_btn_jisuanqi@2x"] forState:UIControlStateNormal];
         [_rightItem setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_rightItem addTarget:self action:@selector(showCalculator:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -154,6 +154,7 @@
     self.navigationController.navigationBar.barTintColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItem];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.delegate = self;
     
     [self.view addSubview:self.tagsView];
     [self.view addSubview:self.mainScrollView];
@@ -188,16 +189,45 @@
     
     self.mainScrollView.contentSize = CGSizeMake(self.childViewControllers.count * self.mainScrollView.width, self.mainScrollView.height);
     
+    [self.view addGestureRecognizer:({
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit:)];
+        tap.delegate = self;
+        tap;
+    })];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginEditing) name:UIKeyboardWillShowNotification object:nil];
+}
+
+-(void)willBeginEditing
+{
+    isEditing = YES;
+}
+
+-(void)endEdit:(UITapGestureRecognizer*)sender
+{
+//    [self.view endEditing:YES];
+    [self.navigationController.navigationBar endEditing:YES];
+    isEditing = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.delegate = self;
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar endEditing:YES];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.delegate = nil;
 }
 
 -(void)viewDidLayoutSubviews
@@ -209,6 +239,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == self) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }else
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (isEditing) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

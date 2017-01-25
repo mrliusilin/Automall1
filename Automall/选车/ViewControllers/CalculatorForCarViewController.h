@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CalculatorForCarViewController : UIViewController
+@interface CalculatorForCarViewController : ParentsViewController
 
 @end

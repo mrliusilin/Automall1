@@ -25,7 +25,7 @@
 
 //@property(nonatomic,strong)UIButton * updateInfoButton;
 
-@property(nonatomic,strong)SinglePhotoManager * photoManager;
+//@property(nonatomic,strong)SinglePhotoManager * photoManager;
 
 @property(nonatomic,strong)UIButton * loginBT;
 
@@ -53,17 +53,25 @@
         _loginBT.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
         [_loginBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_loginBT setTitle:@"登录/注册" forState:UIControlStateNormal];
+        [_loginBT addTarget:self action:@selector(showMoreInfo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _loginBT;
 }
 
--(SinglePhotoManager *)photoManager
+-(void)showMoreInfo:(UIButton*)sender
 {
-    if (!_photoManager) {
-        _photoManager = [SinglePhotoManager sharedSinglePhotoManager];
+    if (self.delegate) {
+        [self.delegate loginBTClicked:sender];
     }
-    return _photoManager;
 }
+
+//-(SinglePhotoManager *)photoManager
+//{
+//    if (!_photoManager) {
+//        _photoManager = [SinglePhotoManager sharedSinglePhotoManager];
+//    }
+//    return _photoManager;
+//}
 
 -(UIImageView *)backImageView
 {
@@ -130,7 +138,7 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.photoManager.parentController = [self getParentVC];
+//    self.photoManager.parentController = [self getParentVC];
 //    self.headerImageView.layer.cornerRadius = self.headerImageView.width/2;
 }
 
@@ -173,7 +181,7 @@
         make.height.mas_equalTo(FONT_SIZE_DETAIL_BIGER + 3);
     }];
     
-    self.photoManager.tapImageView = self.headerImageView;
+//    self.photoManager.tapImageView = self.headerImageView;
 }
 
 -(void)drawRect:(CGRect)rect

@@ -8,10 +8,13 @@
 
 #import "HotCollectionViewCell.h"
 #import "ImageAndTileButton.h"
+#import "UIImageView+WebCache.h"
 
 @interface HotCollectionViewCell ()
 
 @property(nonatomic,strong)ImageAndTileButton * button;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLB;
 
 @end
 
@@ -41,11 +44,21 @@
     return _button;
 }
 
+-(void)setModel:(NewCarHotBrandModel *)model
+{
+    _model = model;
+    NSString * str =STRADD(HTTPNewCarImageRoot, _model.GODCAR028003);
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:str]];
+    self.titleLB.text = _model.GODCAR028002;
+}
+
+
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.button.frame = self.bounds;
-    [self.contentView addSubview:self.button];
+//    self.button.frame = self.bounds;
+//    [self.contentView addSubview:self.button];
 }
 
 

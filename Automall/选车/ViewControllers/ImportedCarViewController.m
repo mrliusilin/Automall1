@@ -12,6 +12,8 @@
 #import "HotBrandCollectionViewCell.h"
 #import "GDTableViewHeaderFooterView.h"
 
+#import "ImportCarEndselectViewController.h"
+
 #define HEADER_VIEW_HEIGHT 180
 
 @interface ImportedCarViewController ()<SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
@@ -283,9 +285,13 @@
 
 -(void)showMore:(UIButton*)sender
 {
-    isShowMore = !isShowMore;
-    [self setupQuickSelect];
-    [self setupFrame];
+//    isShowMore = !isShowMore;
+//    [self setupQuickSelect];
+//    [self setupFrame];
+    
+    ImportedCarViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"ImportedCarViewController"];
+    [vc setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)chageTag:(UIButton*)sender

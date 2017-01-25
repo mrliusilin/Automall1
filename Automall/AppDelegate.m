@@ -28,6 +28,7 @@
     [self.window makeKeyAndVisible];
     
     [[UITableView appearance] setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.001)]];
+    [UITableView appearance].sectionFooterHeight = 0.001;
 //    [[UIView appearance] setBackgroundColor:[UIColor whiteColor]];
     return YES;
 }

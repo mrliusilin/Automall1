@@ -9,6 +9,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import "AMapNaviCommonObj.h"
 #import "AMapNaviDriveDataRepresentable.h"
+#import "AMapNaviRoutePolylineOption.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -113,6 +114,11 @@ typedef NS_ENUM(NSInteger, AMapNaviDriveViewShowMode)
  */
 @property (nonatomic, assign) CGFloat cameraDegree;
 
+/**
+ *  当前地图的zoomLevel，修改zoomLevel会进入非锁车状态
+ */
+@property (nonatomic, assign) CGFloat mapZoomLevel;
+
 #pragma mark - Polyline Texture
 
 /**
@@ -203,6 +209,14 @@ typedef NS_ENUM(NSInteger, AMapNaviDriveViewShowMode)
  *  @param showMode 显示模式
  */
 - (void)driveView:(AMapNaviDriveView *)driveView didChangeShowMode:(AMapNaviDriveViewShowMode)showMode;
+
+/**
+ *  获取导航界面上路线显示样式的回调函数
+ *
+ *  @param naviRoute 当前界面的路线信息
+ *  @return AMapNaviRoutePolylineOption 路线显示样式
+ */
+- (AMapNaviRoutePolylineOption *)driveView:(AMapNaviDriveView *)driveView needUpdatePolylineOptionForRoute:(AMapNaviRoute *)naviRoute;
 
 @end
 

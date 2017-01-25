@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NewCarHotBrandModel.h"
+
 @interface HotCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,strong)UIImage * img;
 
 @property(nonatomic,copy)NSString * title;
+
+@property(nonatomic,strong)NewCarHotBrandModel * model;
 
 @end

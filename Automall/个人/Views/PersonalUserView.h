@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PersonalUserViewDelegate <NSObject>
+
+-(void)loginBTClicked:(UIButton*)sender;
+
+@end
+
 @interface PersonalUserView : UIView
+
+@property(nonatomic,assign) id<PersonalUserViewDelegate> delegate;
 
 @end

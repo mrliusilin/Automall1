@@ -12,7 +12,18 @@
 #import "UIView+Rect.h"
 #import "PersonalTableViewCell.h"
 
-@interface PersonalMainViewController ()<UITableViewDelegate,UITableViewDataSource>
+/**ViewControllers*/
+#import "PreferenceSetting.h"
+#import "UserInfoTableViewController.h"
+#import "AddMyCarTableViewController.h"
+#import "MyCarsViewController.h"
+#import "UserBackInfoViewController.h"
+#import "MyInformationViewController.h"
+
+@interface PersonalMainViewController ()<UITableViewDelegate,UITableViewDataSource,PersonalUserViewDelegate>
+{
+    BOOL isPopToShow;
+}
 
 @property(nonatomic,strong)UITableView* tableView;
 
@@ -30,7 +41,7 @@
 
 @property(nonatomic,strong)NSMutableArray * configList;
 
-@property(nonatomic,strong)UINavigationBar * naviBar;
+@property(nonatomic,strong)UIView * naviBar;
 
 @end
 
@@ -143,15 +154,25 @@
     return _tableView;
 }
 
--(UINavigationBar *)naviBar
+-(UIView *)naviBar
 {
     if (!_naviBar) {
-        _naviBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, 44)];
-        UIView * v =[[UIView alloc] initWithFrame:_naviBar.bounds];
-        v.backgroundColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
-        [_naviBar setValue:v forKey:@"backgroundView"];
+        _naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, 44)];
+//        UIView * v =[[UIView alloc] initWithFrame:_naviBar.bounds];
+//        v.backgroundColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
+//        [_naviBar setValue:v forKey:@"backgroundView"];
+        _naviBar.backgroundColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
         _naviBar.tintColor = [UIColor whiteColor];
-        [_naviBar pushNavigationItem:self.navigationItem animated:NO];
+        
+        UIButton * bt = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_Width - 52, 2, 40, 40)];
+        
+        [bt setImage:[UIImage imageNamed:@"img_1"] forState:UIControlStateNormal];
+        [bt setTintColor:[UIColor whiteColor]];
+        [_naviBar addSubview:bt];
+        [bt addTarget:self action:@selector(jumpTosetting:) forControlEvents:UIControlEventTouchUpInside];
+        
+//        __strong typeof(self.navigationItem) naviItem = self.navigationItem;
+//        [_naviBar pushNavigationItem:naviItem animated:NO];
     }
     return _naviBar;
 }
@@ -161,6 +182,7 @@
     if (!_userView) {
         _userView = [[PersonalUserView alloc] initWithFrame:CGRectMake(0, self.naviBar.maxY, SCREEN_Width, 80)];
         _userView.backgroundColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
+        _userView.delegate = self;
     }
     return _userView;
 }
@@ -225,6 +247,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)jumpTosetting:(UIButton*)sender
+{
+    PreferenceSetting * vc = [PreferenceSetting new];
+    [vc setHidesBottomBarWhenPushed:YES];
+//    isPopToShow = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)setupUI
 {
     [self.topHeaderView addSubview:self.naviBar];
@@ -239,20 +269,52 @@
     statuBarView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:statuBarView];
     
-    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBarHidden = YES;
 }
 #pragma mark -- LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.navigationController.navigationBar.hidden = YES;
     self.extendedLayoutIncludesOpaqueBars = YES;
     self.edgesForExtendedLayout = UIRectEdgeTop;
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.navigationItem.rightBarButtonItem = ({
-        UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"个人选中@2x"] style:UIBarButtonItemStylePlain target:self action:nil];
-        item;
-    });
     [self setupUI];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    if (isPopToShow) {
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
+////        isPopToShow = NO;
+//    }else
+//    {
+//        self.navigationController.navigationBarHidden = YES;
+//    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    isPopToShow = !isPopToShow;
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:1];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
 }
 
 #pragma mark -- UITableViewDataSource
@@ -303,9 +365,8 @@
     
     PersonalTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PersonalTableViewCell"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"个人选中@2x"]];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"geren_icon_1@2x"]];
     
-    cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE_CONTENT];
     if (indexPath.section == 1) {
         cell.textLabel.text = self.configList[indexPath.row];
     }
@@ -317,6 +378,48 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) {
+        switch (indexPath.row) {
+            case 0:{
+                MyCarsViewController * vc = [MyCarsViewController new];
+                [vc setHidesBottomBarWhenPushed:YES];
+//                isPopToShow = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 1:
+            {
+                MyInformationViewController * vc = [MyInformationViewController new];
+                [vc setHidesBottomBarWhenPushed:YES];
+//                isPopToShow = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case 2:
+            {
+                UserBackInfoViewController * vc = [UserBackInfoViewController new];
+                [vc setHidesBottomBarWhenPushed:YES];
+//                isPopToShow = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark -- PersonalUserViewDelegate
+
+-(void)loginBTClicked:(UIButton *)sender
+{
+    UserInfoTableViewController * vc = [UserInfoTableViewController new];
+    [vc setHidesBottomBarWhenPushed:YES];
+    isPopToShow = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

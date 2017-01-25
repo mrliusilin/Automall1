@@ -32,6 +32,8 @@
 
 -(CGFloat)width;
 
+-(void)setWidth:(CGFloat)width;
+
 -(CGFloat)height;
 
 -(void)setHeight:(CGFloat)height;

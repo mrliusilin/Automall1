@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  注意:该方法仅限于在开始导航前使用,开始导航后该方法无效.
  *
- *  @param routeID路径ID
+ *  @param routeID 路径ID
  *  @return 是否选择路径成功
  */
 - (BOOL)selectNaviRouteWithRouteID:(NSInteger)routeID;
@@ -145,6 +145,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)recalculateDriveRouteWithDrivingStrategy:(AMapNaviDrivingStrategy)strategy;
 
 #pragma mark - Manual
+
+/**
+ *  设置车牌信息
+ *
+ *  @param province 车牌省份缩写，例如：@"京"
+ *  @param number 除省份及标点之外，车牌的字母和数字，例如：@"NH1N11"
+ */
+- (void)setVehicleProvince:(NSString *)province number:(NSString *)number;
 
 /**
  *  设置播报模式,默认新手详细播报(AMapNaviBroadcastModeDetailed)

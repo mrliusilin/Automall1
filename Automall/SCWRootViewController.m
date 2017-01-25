@@ -177,10 +177,9 @@ struct utsname systemInfo;
     naviGationC.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: naviBarTitleColor,
                                                                     UITextAttributeFont : [UIFont systemFontOfSize:16]};
     naviGationC.navigationBar.translucent = NO;//    Bar的模糊效果，默认为YES
-
-    UIView * statuBarView = [[UIView alloc]initWithFrame:CGRectMake(0, -20, SCREEN_Width, 20)];
-    statuBarView.backgroundColor = [UIColor whiteColor];
-    [naviGationC.navigationBar addSubview:statuBarView];
+//    UIView * statuBarView = [[UIView alloc]initWithFrame:CGRectMake(0, -20, SCREEN_Width, 20)];
+//    statuBarView.backgroundColor = [UIColor whiteColor];
+//    [naviGationC.navigationBar addSubview:statuBarView];
 }
 
 

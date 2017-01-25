@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BrandCarSelectViewController : UIViewController
+@interface BrandCarSelectViewController : ParentsViewController
 
 @end

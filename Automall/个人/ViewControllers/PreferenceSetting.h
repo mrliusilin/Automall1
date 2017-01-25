@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PreferenceSetting : UIViewController
+@interface PreferenceSetting : ParentsViewController
 
 @end

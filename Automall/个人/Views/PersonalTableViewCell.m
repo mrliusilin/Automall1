@@ -9,6 +9,12 @@
 #import "PersonalTableViewCell.h"
 #import "UIView+Rect.h"
 
+@interface PersonalTableViewCell ()
+
+@property(nonatomic,strong)CAShapeLayer * bottomLine;
+
+@end
+
 @implementation PersonalTableViewCell
 
 - (void)awakeFromNib {
@@ -16,9 +22,23 @@
     // Initialization code
 }
 
+-(CAShapeLayer *)bottomLine
+{
+    if (!_bottomLine) {
+        _bottomLine = [CAShapeLayer layer];
+    }
+    return _bottomLine;
+}
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    return [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+    self.textLabel.textColor = FONT_COLOR_TEXT_BLACK;
+    self.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE_BIGTITLE];
+    self.detailTextLabel.textColor = FONT_COLOR_GRAY;
+    //    self.textLabel.width = 120;
+    self.detailTextLabel.font = [UIFont systemFontOfSize:FONT_SIZE_CONTENT];
+    return self;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -31,13 +51,10 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    CAShapeLayer * layer = [CAShapeLayer layer];
-    
-    layer.fillColor = HEXCOLOR(0xf0f0f0).CGColor;
-    layer.path = [UIBezierPath bezierPathWithRect:CGRectMake(0, self.height, self.width, 1)].CGPath;
-    [self.layer addSublayer:layer];
+    self.bottomLine.fillColor = HEXCOLOR(0xf0f0f0).CGColor;
+    self.bottomLine.path = [UIBezierPath bezierPathWithRect:CGRectMake(0, self.height, self.width, 1)].CGPath;
+    [self.layer addSublayer:self.bottomLine];
     self.textLabel.X = 12;
-    self.detailTextLabel.font = [UIFont systemFontOfSize:FONT_SIZE_DETAIL_BIGER];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

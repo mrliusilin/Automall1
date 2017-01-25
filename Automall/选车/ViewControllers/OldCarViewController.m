@@ -10,6 +10,9 @@
 #import "SDCycleScrollView.h"
 #import "UIView+Rect.h"
 #import "ServerButton.h"
+#import "CarFileterViewController.h"
+
+#import "EndSelectedCarViewController.h"
 
 @interface OldCarViewController ()<SDCycleScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -239,7 +242,13 @@
 
 -(void)showMore:(UIButton*)sender
 {
+    EndSelectedCarViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"EndSelectedCarViewController"];
+    [vc setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:vc animated:YES];
     
+//    CarFileterViewController * vc = [CarFileterViewController new];
+//    [vc setHidesBottomBarWhenPushed:YES];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)chageTag:(UIButton*)sender
@@ -254,7 +263,6 @@
         if (self.sortButtons[index] == sender) {
             self.buttomFootView.contentOffset = CGPointMake(index * self.buttomFootView.width, 0);
             currentShowFootview = self.sortTableView[index];
-//            [currentShowFootview reloadData];
         }
     }
 }

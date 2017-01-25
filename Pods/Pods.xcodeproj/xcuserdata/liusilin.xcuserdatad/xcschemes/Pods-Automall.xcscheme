@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DC55445CE15B64389A4D081E44C27D66'
+               BlueprintIdentifier = '8FC61058CCC446EC40AB477182E301BF'
                BlueprintName = 'Pods-Automall'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Automall.a'>

@@ -18,6 +18,8 @@
 
 
 #import <Masonry/Masonry.h>
+#import "ParentsViewController.h"
+
 //字体
 #import "FontMacro.h"
 //颜色

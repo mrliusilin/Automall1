@@ -8,6 +8,7 @@
 
 #import "LoanCalculatorForCarViewController.h"
 #include "PersonalTableViewCell.h"
+#import "BrandCarSelectViewController.h"
 
 #define Left_Spare 12
 
@@ -219,12 +220,28 @@
 -(void)setupUI
 {
     [self.view addSubview:self.mainTableView];
+    self.mainTableView.tableFooterView = ({
+        UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, 100)];
+        UIButton * bt = [[UIButton alloc] initWithFrame:CGRectMake(Left_Spare, Left_Spare * 2, SCREEN_Width - Left_Spare * 2, 40)];
+        [v addSubview:bt];
+        v.height = bt.height * 2;
+        bt.centerY = v.height / 2;
+        bt.backgroundColor = [UIColor orangeColor];
+        [bt setTitle:@"一键计算" forState:UIControlStateNormal];
+        v;
+    });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
 }
 
 #pragma mark -- UITableViewDelegate/UITableviewDataSource
@@ -321,6 +338,13 @@
             break;
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        [self.navigationController pushViewController:[BrandCarSelectViewController new] animated:YES];
+    }
 }
 
 @end

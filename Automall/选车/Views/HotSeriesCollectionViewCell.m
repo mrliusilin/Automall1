@@ -8,6 +8,7 @@
 
 #import "HotSeriesCollectionViewCell.h"
 #import "UIView+Rect.h"
+#import "UIImageView+WebCache.h"
 
 @implementation HotSeriesCollectionViewCell
 
@@ -45,6 +46,14 @@
         _titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE_CONTENT];
     }
     return _titleLabel;
+}
+
+-(void)setModel:(NewCarHotType *)model
+{
+    _model = model;
+    NSString * imgStr = STRADD(HTTPNewCarHotTypes, _model.godcar047003);
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:imgStr]];
+    self.titleLabel.text = _model.godcar029002;
 }
 
 @end

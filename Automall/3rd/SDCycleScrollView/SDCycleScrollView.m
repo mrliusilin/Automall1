@@ -535,7 +535,7 @@ NSString * const ID = @"cycleCell";
     }
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     if (self.autoScroll) {
         [self setupTimer];

@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NewCarHotType.h"//热门车型model
+
 @interface HotSeriesCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,strong) UIImageView * imgView;
 
 @property(nonatomic,strong) UILabel * titleLabel;
+
+@property(nonatomic,strong)NewCarHotType * model;
 
 @end
