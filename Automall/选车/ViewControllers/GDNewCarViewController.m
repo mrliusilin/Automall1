@@ -14,6 +14,8 @@
 #import "PersonalTableViewCell.h"
 #import "SDCycleScrollView.h"
 #import "NewCarEndSelectedViewController.h"
+#import "OldCarBrandSyleViewController.h"
+
 //
 #import "SelectCarNetManager.h"
 //models
@@ -51,6 +53,13 @@
 @property(nonatomic,strong)NSMutableDictionary * brandDic;
 
 @property(nonatomic,strong)NSMutableArray * brandSortKeys;
+
+//@property(nonatomic,strong)OldCarBrandSyleViewController * brandStyleSelectVC;
+//
+//@property(nonatomic,strong)UIView * brandStyleSelectV;
+//
+//@property(nonatomic,strong)UIView * efctWindow;
+
 @end
 
 @implementation GDNewCarViewController
@@ -123,15 +132,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.mainTableView];
-//    self.tableViewIndexArr = ({
-//        NSMutableArray * arr = @[].mutableCopy;
-//        unichar cs['Z' - 'A' +1],c;
-//        for (c = 'A'; c <= 'Z'; c ++ ) {
-//            cs[c - 'A'] = c;
-//            [arr addObject:[NSString stringWithFormat:@"%C",c]];
-//        }
-//        arr;
-//    });
     [self requestDataForHotBrand];
     [self requestDataForRecommend];
     [self requestDataForSeriesInPage:1];
@@ -327,7 +327,7 @@
     PersonalTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PersonalTableViewCell"];
 //    cell.textLabel.text = @"asdsd";
     NSArray * arr = self.brandDic[self.brandSortKeys[indexPath.section - 3]];
-    
+    cell.titleX = 31;
     OldCarBrandModel * model = arr[indexPath.row];
     
     cell.textLabel.text = model.name;
@@ -342,6 +342,15 @@
         NewCarEndSelectedViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil]instantiateViewControllerWithIdentifier:@"NewCarEndSelectedViewController"];
         [vc setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if (indexPath.section > 2) {
+        if (self.delegate) {
+            NSArray * arr = self.brandDic[self.brandSortKeys[indexPath.section - 3]];
+//            cell.titleX = 31;
+            OldCarBrandModel * model = arr[indexPath.row];
+            [self.delegate showSeriesWithBrandID:[NSString stringWithFormat:@"%ld",model.idstr] brandName:model.name];
+        }
     }
 }
 
@@ -362,21 +371,34 @@
 {
     if (collectionView == self.hotBrandCollectionView) {
         HotCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HotCollectionViewCell" forIndexPath:indexPath];
-//        cell.title = @"汽车";
-//        cell.img = [UIImage imageNamed:@"个人选中@2x"];
         NewCarHotBrandModel * model = self.hotBrandArr[indexPath.row];
         [cell setModel:model];
         return cell;
     }
     if (collectionView == self.hotSeriesCollectionView) {
         HotSeriesCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HotSeriesCollectionViewCell" forIndexPath:indexPath];
-//        cell.imgView.image = [UIImage imageNamed:@"个人选中@2x"];
-//        cell.titleLabel.text = @"dsjd";
         NewCarHotType * model = self.hotTypeArr[indexPath.row];
         [cell setModel:model];
         return cell;
     }
     return [UICollectionViewCell new];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView == self.hotBrandCollectionView) {
+        if (self.delegate) {
+            NewCarHotBrandModel * model = self.hotBrandArr[indexPath.row];
+            [self.delegate showSeriesWithBrandID:[NSString stringWithFormat:@"%ld",model.GODCAR028001] brandName:model.GODCAR028002];
+        }
+    }
+    if (collectionView == self.hotSeriesCollectionView) {
+        if (self.delegate) {
+            NewCarHotType * model = self.hotTypeArr[indexPath.row];
+            [self.delegate seriesID:[NSString stringWithFormat:@"%ld",model.godcar029001]];
+        }
+    }
+    
 }
 
 #pragma mark -- SDCycleScrollViewDelegate

@@ -18,12 +18,18 @@
 #import "GDNewCarViewController.h"
 #import "ImportedCarViewController.h"
 #import "OldCarViewController.h"
+#import "OldCarBrandSyleViewController.h"
+#import "NewCarEndSelectedViewController.h"
 
-@interface SelectCarMainViewController ()<UIScrollViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
+@interface SelectCarMainViewController ()<UIScrollViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate,ShowSeriesProtocol,UIGestureRecognizerDelegate>
 {
     UIButton * selectedBT;
     BOOL isEditing;
+    
+    
 }
+
+@property(nonatomic,strong)UIViewController * _currentShowVC;
 
 @property(nonatomic,strong)UITextField * searchText;
 
@@ -36,6 +42,17 @@
 @property(nonatomic,strong)NSMutableArray * tagButtons;
 
 @property(nonatomic,strong)UIView * selectedTageBottomLine;
+
+@property(nonatomic,strong)NSMutableArray * tagButtonsBT;
+
+@property(nonatomic,strong)OldCarBrandSyleViewController * brandStyleSelectVC;
+
+@property(nonatomic,strong)UIView * brandStyleSelectV;
+
+@property(nonatomic,strong)UIView * efctWindow;
+@property(nonatomic,strong)UITapGestureRecognizer * tap;
+
+@property(nonatomic,strong)NSMutableArray * childVC;
 
 @end
 
@@ -62,6 +79,14 @@
     return _tagButtons;
 }
 
+-(NSMutableArray *)tagButtonsBT
+{
+    if (!_tagButtonsBT) {
+        _tagButtonsBT = @[].mutableCopy;
+    }
+    return _tagButtonsBT;
+}
+
 -(UIView *)tagsView
 {
     if (!_tagsView) {
@@ -78,6 +103,7 @@
                 [self chageSelectedTag:bt];
             }
             bt.titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE_BIGTITLE];
+            [self.tagButtonsBT addObject:bt];
         }
         
         self.selectedTageBottomLine = ({
@@ -97,7 +123,7 @@
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.bounces = NO;
         _mainScrollView.delegate = self;
-        _mainScrollView.scrollEnabled = NO;
+        _mainScrollView.scrollEnabled = YES;
     }
     return _mainScrollView;
 }
@@ -147,14 +173,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self setHidesBottomBarWhenPushed:YES];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-        
+    
+    self.childVC = @[].mutableCopy;
+    
     self.navigationItem.titleView = self.searchText;
     self.navigationController.navigationBar.barTintColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItem];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.delegate = self;
     
     [self.view addSubview:self.tagsView];
     [self.view addSubview:self.mainScrollView];
@@ -163,8 +189,8 @@
     [self addChildViewController:financialCarVC];
     UIView * financialCarView = financialCarVC.view;
     financialCarView.frame = self.mainScrollView.bounds;
-//    financialCarView.X = self.mainScrollView.width;
     [self.mainScrollView addSubview:financialCarView];
+    [self.childVC addObject:financialCarVC];
     
     GDNewCarViewController * newCarVC = [GDNewCarViewController new];
     [self addChildViewController:newCarVC];
@@ -172,6 +198,8 @@
     newCarView.frame = self.mainScrollView.bounds;
     newCarView.X = self.mainScrollView.width;
     [self.mainScrollView addSubview:newCarView];
+    newCarVC.delegate = self;
+    [self.childVC addObject:newCarVC];
     
     OldCarViewController * oldCarVC = [OldCarViewController new];
     [self addChildViewController:oldCarVC];
@@ -179,6 +207,7 @@
     oldCarVCCarView.frame = self.mainScrollView.bounds;
     oldCarVCCarView.X = self.mainScrollView.width * 2;
     [self.mainScrollView addSubview:oldCarVCCarView];
+    [self.childVC addObject:oldCarVC];
     
     ImportedCarViewController * importedCarVC = [ImportedCarViewController new];
     [self addChildViewController:importedCarVC];
@@ -186,8 +215,11 @@
     importedCarView.frame = self.mainScrollView.bounds;
     importedCarView.X = self.mainScrollView.width * 3;
     [self.mainScrollView addSubview:importedCarView];
+    [self.childVC addObject:importedCarVC];
     
     self.mainScrollView.contentSize = CGSizeMake(self.childViewControllers.count * self.mainScrollView.width, self.mainScrollView.height);
+    
+    [self.mainScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     
     [self.view addGestureRecognizer:({
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit:)];
@@ -196,6 +228,7 @@
     })];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginEditing) name:UIKeyboardWillShowNotification object:nil];
+    [self iniatizeUI];
 }
 
 -(void)willBeginEditing
@@ -209,6 +242,60 @@
     [self.navigationController.navigationBar endEditing:YES];
     isEditing = NO;
 }
+
+-(void)hiddenChiledView
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        for (UIView *v in self.efctWindow.subviews) {
+            v.X = SCREEN_Width;
+        }
+        self.efctWindow.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
+    }];
+    self.efctWindow.userInteractionEnabled = NO;
+}
+
+-(UIView *)efctWindow
+{
+    if (!_efctWindow) {
+        _efctWindow = [[UIView alloc] initWithFrame:SCREEN_BOUNDS];
+        _efctWindow.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
+        _efctWindow.userInteractionEnabled = NO;
+        [_efctWindow addGestureRecognizer:({
+            self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenChiledView)];
+            self.tap.delegate = self;
+            self.tap;
+        })];
+    }
+    return _efctWindow;
+}
+
+-(void)iniatizeUI
+{
+    __weak typeof(self) weakSelf = self;
+    
+    self.brandStyleSelectVC = [OldCarBrandSyleViewController new];
+    self.brandStyleSelectVC.backBlock = ^(NSString * serilesName,NSInteger serilesID){
+        
+        NSInteger index = weakSelf.mainScrollView.contentOffset.x / SCREEN_Width;
+        UIViewController *  currentShowVC= weakSelf.childVC[index];
+        
+        if ([currentShowVC isKindOfClass:[GDNewCarViewController class]]) {
+            
+            NewCarEndSelectedViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil]instantiateViewControllerWithIdentifier:@"NewCarEndSelectedViewController"];
+            [vc setHidesBottomBarWhenPushed:YES];
+            NSString * ss = [NSString stringWithFormat:@"%ld",serilesID];
+            [vc setParementDic:@{@"g26":[NSString stringWithFormat:@"%ld",serilesID]}];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }
+        [weakSelf hiddenChiledView];
+    };
+    [self.brandStyleSelectVC setBackActionWithTarget:self Selector:@selector(backToShowBrand)];
+    self.brandStyleSelectV = self.brandStyleSelectVC.view;
+    [self.efctWindow addSubview:self.brandStyleSelectV];
+    self.brandStyleSelectV.frame = CGRectMake(SCREEN_Width, 0, SCREEN_Width - 69, SCREEN_Height);
+    [self.view addSubview:self.efctWindow];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -234,6 +321,7 @@
 {
     [super viewDidLayoutSubviews];
     self.mainScrollView.frame = CGRectMake(0, self.tagsView.maxY, SCREEN_Width, self.view.height - self.tagsView.maxY);
+    self.mainScrollView.contentSize = CGSizeMake(self.childViewControllers.count * self.mainScrollView.width, self.mainScrollView.height);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -251,10 +339,64 @@
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (gestureRecognizer == self.tap) {
+        if (!self.efctWindow.userInteractionEnabled || (self.efctWindow.userInteractionEnabled && [gestureRecognizer locationInView:self.efctWindow].x > 69)) {
+            return NO;
+        }
+        return YES;
+    }
     if (isEditing) {
         return YES;
     }
     return NO;
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x / SCREEN_Width) {
+        NSInteger index = scrollView.contentOffset.x / SCREEN_Width;
+        [self chageSelectedTag:self.tagButtonsBT[index]];
+//        self._currentShowVC = self.childVC[index];
+    }
+}
+
+-(void)showSeriesWithBrandID:(NSString *)brandID brandName:(NSString *)brandName
+{
+    [self.brandStyleSelectVC setBrandID:brandID];
+    [self.brandStyleSelectVC setBrandName:brandName];
+    self.efctWindow.userInteractionEnabled = YES;
+    [UIView animateWithDuration:0.4 animations:^{
+        self.brandStyleSelectV.X = 69;
+    }];
+}
+
+-(void)seriesID:(NSString *)seriesID
+{
+    NSInteger index = self.mainScrollView.contentOffset.x / SCREEN_Width;
+    UIViewController *  currentShowVC= self.childVC[index];
+    
+    if ([currentShowVC isKindOfClass:[GDNewCarViewController class]]) {
+        
+        NewCarEndSelectedViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil]instantiateViewControllerWithIdentifier:@"NewCarEndSelectedViewController"];
+        [vc setHidesBottomBarWhenPushed:YES];
+        NSString * ss = seriesID;
+        [vc setParementDic:@{@"g26":seriesID}];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+-(void)dealloc
+{
+    [self.mainScrollView removeObserver:self forKeyPath:@"contentOffset"];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (object == self.mainScrollView) {
+        if ([keyPath isEqualToString:@"contentOffset"]) {
+            
+        }
+    }
 }
 
 @end

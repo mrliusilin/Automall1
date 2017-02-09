@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgV;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLB;
+
+@property (weak, nonatomic) IBOutlet UILabel *moneyLB;
 
 @end

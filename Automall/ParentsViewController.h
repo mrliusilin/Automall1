@@ -22,4 +22,6 @@
 
 -(void)setBackActionWithTarget:(id)target Selector:(SEL)selector;
 
+-(void)removeGestureForEndEditing;
+
 @end

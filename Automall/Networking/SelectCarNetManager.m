@@ -25,6 +25,21 @@
     }];
 }
 
++(void)getRequestForNewCarDetailPrementsWithID:(NSString *)carID seccess:(void (^)(id))seccess
+{
+    AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
+    shareManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    shareManager.requestSerializer.timeoutInterval = 10;
+    
+    NSString * urlStr = HTTPNewCarDetailParements(carID);
+    [shareManager GET:HTTPNewCarDetailParements(carID) parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        seccess(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
 +(void)getRequestForNewCarsRecommendseccess:(void (^)(id))seccess
 {
     AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
@@ -109,6 +124,18 @@
     }];
 }
 
++(void)getRequestOldCarRecommendSuccess:(void (^)(id))success
+{
+    AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
+    shareManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    shareManager.requestSerializer.timeoutInterval = 10;
+    [shareManager GET:HTTPOldCarRecommend parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
 
 +(void)getRequestForNewCarsWithFileterParements:(NSDictionary *)parements Success:(void (^)(id))success
 {
@@ -117,6 +144,7 @@
     shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
     shareManager.requestSerializer.timeoutInterval = 10;
     NSString * parementsStr = [self getParementStrWithDic:parements];
+    NSString * urlStr = STRADD(HTTPNewCarFileter, parementsStr);
     [shareManager GET:STRADD(HTTPNewCarFileter, parementsStr) parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -159,6 +187,63 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
+}
+
++(void)getRequestImportCarRecommendSuccess:(void (^)(id))success
+{
+    AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
+    shareManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    shareManager.requestSerializer.timeoutInterval = 10;
+    [shareManager GET:HTTPImportCarRecommend parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
++(void)getDetailImgsPre:(NSString *)pre withID:(NSString *)carID Success:(void (^)(id))success
+{
+    AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
+    shareManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    shareManager.requestSerializer.timeoutInterval = 10;
+    NSString * urlStr = HTTPDetailImgs(carID, pre);
+    [shareManager GET:HTTPDetailImgs(carID, pre) parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
++(void)getInstallMentRequestMember:(NSString *)ID withType:(NSString *)type Success:(void (^)(id))success
+{
+    AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
+    shareManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    shareManager.requestSerializer.timeoutInterval = 10;
+    NSString * urlStr = HTTPInstallMentOrderRequest(ID, type);
+    [shareManager GET:HTTPInstallMentOrderRequest(ID, type) parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+
++(void)postInstallMentRequestWithParements:(NSDictionary *)parements Success:(void (^)(id))success
+{
+    AFHTTPSessionManager * shareManager = [AFHTTPSessionManager manager];
+    shareManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    shareManager.requestSerializer.timeoutInterval = 10;
+//    NSString * urlStr = HTTPInstallMentOrderRequest(ID, type);
+    [shareManager POST:HTTPInstallMentPost parameters:parements progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
 }
 
 @end

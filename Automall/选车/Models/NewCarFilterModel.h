@@ -10,7 +10,7 @@
 
 @interface NewCarFilterModel : NSObject
 
-@property(nonatomic,assign)long long GODCAR001001;
+@property(nonatomic,assign)NSInteger GODCAR001001;
 
 @property(nonatomic,copy)NSString * GODCAR001005;//车型
 

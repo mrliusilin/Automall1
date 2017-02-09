@@ -10,4 +10,6 @@
 
 @interface EndSelectedCarViewController : ParentsViewController
 
+@property(nonatomic,strong)NSMutableDictionary * prasDic;
+
 @end

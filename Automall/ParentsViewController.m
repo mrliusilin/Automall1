@@ -10,6 +10,11 @@
 
 @interface ParentsViewController ()<UIGestureRecognizerDelegate>
 @property(nonatomic,strong)UIView * statuBackView;
+
+@property(nonatomic,strong)UITapGestureRecognizer * endEdittingTap;
+
+@property(nonatomic,assign)BOOL keyBoardIsShow;
+
 @end
 
 @implementation ParentsViewController
@@ -99,6 +104,12 @@
     return _navigationBarView;
 }
 
+-(void)removeGestureForEndEditing
+{
+//    [self.view removeGestureRecognizer:self.endEdittingTap];
+    self.endEdittingTap = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.extendedLayoutIncludesOpaqueBars = YES;
@@ -125,13 +136,25 @@
     }];
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    [self.view addGestureRecognizer:({
-//        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit:)];
-////        tap.delegate = self;
-//        tap;
-//    })];
+    [self.view addGestureRecognizer:({
+        self.endEdittingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit:)];
+        self.endEdittingTap.delegate = self;
+        self.endEdittingTap;
+    })];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyBoard) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyBoard) name:UIKeyboardWillHideNotification object:nil];
 //    self.navigationController.navigationBar.hidden = YES;
+}
+
+-(void)hideKeyBoard
+{
+    self.keyBoardIsShow = NO;
+}
+
+-(void)showKeyBoard
+{
+    self.keyBoardIsShow = YES;
 }
 
 -(void)endEdit:(UITapGestureRecognizer*)tap
@@ -142,13 +165,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 -(void)viewDidLayoutSubviews
@@ -158,6 +179,16 @@
         ((UILabel*)self.titleView).text = self.title;
     }
     [self.view bringSubviewToFront:self.navigationBarView];
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (self.endEdittingTap) {
+        if (!self.keyBoardIsShow) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

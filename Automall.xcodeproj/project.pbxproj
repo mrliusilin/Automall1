@@ -609,6 +609,13 @@
 		AFE83B621E2875AF005A9243 /* InsuranceForCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE83B611E2875AF005A9243 /* InsuranceForCarViewController.m */; };
 		AFE83B651E287E41005A9243 /* CalculatorForCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE83B641E287E41005A9243 /* CalculatorForCarViewController.m */; };
 		AFE83B681E2882FD005A9243 /* LoanCalculatorForCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE83B671E2882FD005A9243 /* LoanCalculatorForCarViewController.m */; };
+		AFE881781E4959B100362BA4 /* OldCarRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE881771E4959B100362BA4 /* OldCarRecommendModel.m */; };
+		AFE8817B1E497D2500362BA4 /* ParamentsModels.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE8817A1E497D2500362BA4 /* ParamentsModels.m */; };
+		AFE8817F1E49A33B00362BA4 /* ParementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE8817D1E49A33B00362BA4 /* ParementCell.m */; };
+		AFE881801E49A33B00362BA4 /* ParementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFE8817E1E49A33B00362BA4 /* ParementCell.xib */; };
+		AFE881831E49B4AE00362BA4 /* PrarementsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE881821E49B4AE00362BA4 /* PrarementsHeaderView.m */; };
+		AFE881851E49B4C200362BA4 /* PrarementsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFE881841E49B4C200362BA4 /* PrarementsHeaderView.xib */; };
+		AFE881881E49C18600362BA4 /* ImportCarRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE881871E49C18600362BA4 /* ImportCarRecommendModel.m */; };
 		AFE957881E15E6AC00821748 /* orderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE957871E15E6AC00821748 /* orderView.m */; };
 		AFE9578B1E15FE4A00821748 /* PreferenceCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE9578A1E15FE4A00821748 /* PreferenceCollectionViewLayout.m */; };
 		AFE9578E1E16333C00821748 /* PreferenceSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE9578D1E16333C00821748 /* PreferenceSetting.m */; };
@@ -636,6 +643,13 @@
 		AFECB2571E3098C50063737A /* NewCarEndSelectedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECB2551E3098C50063737A /* NewCarEndSelectedCollectionViewCell.m */; };
 		AFECB2581E3098C50063737A /* NewCarEndSelectedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFECB2561E3098C50063737A /* NewCarEndSelectedCollectionViewCell.xib */; };
 		AFECB25B1E30B9220063737A /* OldCarBrandSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECB25A1E30B9210063737A /* OldCarBrandSelectViewController.m */; };
+		AFEDB3E81E4AEAE900962516 /* InstallmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEDB3E71E4AEAE900962516 /* InstallmentVC.m */; };
+		AFEDB3EB1E4AEB7800962516 /* InstallmentScrollV.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEDB3EA1E4AEB7800962516 /* InstallmentScrollV.m */; };
+		AFEDB3ED1E4AEB8D00962516 /* InstallmentScrollV.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEDB3EC1E4AEB8D00962516 /* InstallmentScrollV.xib */; };
+		AFEDB3F01E4B2BE400962516 /* InstallMentOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEDB3EF1E4B2BE400962516 /* InstallMentOrderListViewController.m */; };
+		AFEDB3F51E4B2C3E00962516 /* InstallMentOrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEDB3F31E4B2C3E00962516 /* InstallMentOrderListTableViewCell.m */; };
+		AFEDB3F61E4B2C3E00962516 /* InstallMentOrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEDB3F41E4B2C3E00962516 /* InstallMentOrderListTableViewCell.xib */; };
+		AFEDB3F91E4B324700962516 /* AuditProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEDB3F81E4B324700962516 /* AuditProgressView.m */; };
 		AFEE03781E36EF020031E7D5 /* NewCarFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEE03771E36EF020031E7D5 /* NewCarFilterModel.m */; };
 		AFEE037C1E3717300031E7D5 /* CarSelectParementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEE037B1E3717300031E7D5 /* CarSelectParementModel.m */; };
 		AFEE037F1E3717810031E7D5 /* CarLevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEE037E1E3717810031E7D5 /* CarLevelModel.m */; };
@@ -651,7 +665,6 @@
 		AFEECDE01E2C5DAB008403CB /* BrandSelectDetaileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEECDDF1E2C5DAB008403CB /* BrandSelectDetaileViewController.m */; };
 		AFEECDE31E2C67C1008403CB /* UserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEECDE21E2C67C1008403CB /* UserInfoTableViewController.m */; };
 		AFEECDE61E2C925A008403CB /* AddMyCarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEECDE51E2C925A008403CB /* AddMyCarTableViewController.m */; };
-		AFEECDE91E2C9E89008403CB /* MyCarCoinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEECDE81E2C9E89008403CB /* MyCarCoinTableViewController.m */; };
 		AFEECDED1E2C9EE5008403CB /* MyCarCoinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEECDEB1E2C9EE5008403CB /* MyCarCoinTableViewCell.m */; };
 		AFEECDEE1E2C9EE5008403CB /* MyCarCoinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEECDEC1E2C9EE5008403CB /* MyCarCoinTableViewCell.xib */; };
 		AFEECDF11E2CA69F008403CB /* InsuranceCaculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEECDF01E2CA69F008403CB /* InsuranceCaculatorViewController.m */; };
@@ -676,6 +689,16 @@
 		AFEF9B011E2F65F9009E9F5F /* LogisticsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEF9B001E2F65F9009E9F5F /* LogisticsInfoViewController.m */; };
 		AFEF9B051E2F666D009E9F5F /* LogisticsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEF9B031E2F666D009E9F5F /* LogisticsInfoTableViewCell.m */; };
 		AFEF9B061E2F666D009E9F5F /* LogisticsInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEF9B041E2F666D009E9F5F /* LogisticsInfoTableViewCell.xib */; };
+		AFF315A21E45630C0025200F /* NewCarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF315A11E45630C0025200F /* NewCarDetailViewController.swift */; };
+		AFF315A51E4568930025200F /* Swift-Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF315A41E4568930025200F /* Swift-Utils.swift */; };
+		AFF315A91E4581740025200F /* NewCarDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF315A71E4581740025200F /* NewCarDetailTableViewCell.swift */; };
+		AFF315AA1E4581740025200F /* NewCarDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFF315A81E4581740025200F /* NewCarDetailTableViewCell.xib */; };
+		AFF315AC1E45C7610025200F /* MyCarCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF315AB1E45C7610025200F /* MyCarCoinViewController.swift */; };
+		AFF555831E4C3C1100CCD0AA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF555811E4C3C1100CCD0AA /* OrderViewController.m */; };
+		AFF555891E4C3DF500CCD0AA /* OrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF555871E4C3DF500CCD0AA /* OrderListTableViewCell.m */; };
+		AFF5558A1E4C3DF500CCD0AA /* OrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFF555881E4C3DF500CCD0AA /* OrderListTableViewCell.xib */; };
+		AFF5558D1E4C523F00CCD0AA /* LSLInstallMentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF5558C1E4C523F00CCD0AA /* LSLInstallMentView.m */; };
+		AFF5558F1E4C525900CCD0AA /* LSLInstallMentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFF5558E1E4C525900CCD0AA /* LSLInstallMentView.xib */; };
 		AFF813131E1F711400BCA9F8 /* NaviSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF813121E1F711400BCA9F8 /* NaviSearchViewController.m */; };
 		AFF813171E1F835800BCA9F8 /* EmulatorNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF813161E1F835800BCA9F8 /* EmulatorNaviViewController.m */; };
 		AFF8131A1E1F851F00BCA9F8 /* PersonalMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF813191E1F851F00BCA9F8 /* PersonalMainViewController.m */; };
@@ -1420,6 +1443,18 @@
 		AFE83B641E287E41005A9243 /* CalculatorForCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorForCarViewController.m; sourceTree = "<group>"; };
 		AFE83B661E2882FD005A9243 /* LoanCalculatorForCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanCalculatorForCarViewController.h; sourceTree = "<group>"; };
 		AFE83B671E2882FD005A9243 /* LoanCalculatorForCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanCalculatorForCarViewController.m; sourceTree = "<group>"; };
+		AFE881761E4959B100362BA4 /* OldCarRecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldCarRecommendModel.h; sourceTree = "<group>"; };
+		AFE881771E4959B100362BA4 /* OldCarRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldCarRecommendModel.m; sourceTree = "<group>"; };
+		AFE881791E497D2500362BA4 /* ParamentsModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamentsModels.h; sourceTree = "<group>"; };
+		AFE8817A1E497D2500362BA4 /* ParamentsModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamentsModels.m; sourceTree = "<group>"; };
+		AFE8817C1E49A33B00362BA4 /* ParementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParementCell.h; sourceTree = "<group>"; };
+		AFE8817D1E49A33B00362BA4 /* ParementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParementCell.m; sourceTree = "<group>"; };
+		AFE8817E1E49A33B00362BA4 /* ParementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParementCell.xib; sourceTree = "<group>"; };
+		AFE881811E49B4AE00362BA4 /* PrarementsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrarementsHeaderView.h; sourceTree = "<group>"; };
+		AFE881821E49B4AE00362BA4 /* PrarementsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrarementsHeaderView.m; sourceTree = "<group>"; };
+		AFE881841E49B4C200362BA4 /* PrarementsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrarementsHeaderView.xib; sourceTree = "<group>"; };
+		AFE881861E49C18600362BA4 /* ImportCarRecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportCarRecommendModel.h; sourceTree = "<group>"; };
+		AFE881871E49C18600362BA4 /* ImportCarRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportCarRecommendModel.m; sourceTree = "<group>"; };
 		AFE957861E15E6AC00821748 /* orderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderView.h; sourceTree = "<group>"; };
 		AFE957871E15E6AC00821748 /* orderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderView.m; sourceTree = "<group>"; };
 		AFE957891E15FE4A00821748 /* PreferenceCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceCollectionViewLayout.h; sourceTree = "<group>"; };
@@ -1468,6 +1503,19 @@
 		AFECB2561E3098C50063737A /* NewCarEndSelectedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCarEndSelectedCollectionViewCell.xib; sourceTree = "<group>"; };
 		AFECB2591E30B9210063737A /* OldCarBrandSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldCarBrandSelectViewController.h; sourceTree = "<group>"; };
 		AFECB25A1E30B9210063737A /* OldCarBrandSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldCarBrandSelectViewController.m; sourceTree = "<group>"; };
+		AFEDB3E51E4AA98500962516 /* ShowSeriesProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowSeriesProtocol.h; sourceTree = "<group>"; };
+		AFEDB3E61E4AEAE900962516 /* InstallmentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstallmentVC.h; path = "Automall/选车/InstallmentVC.h"; sourceTree = SOURCE_ROOT; };
+		AFEDB3E71E4AEAE900962516 /* InstallmentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstallmentVC.m; path = "Automall/选车/InstallmentVC.m"; sourceTree = SOURCE_ROOT; };
+		AFEDB3E91E4AEB7800962516 /* InstallmentScrollV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallmentScrollV.h; sourceTree = "<group>"; };
+		AFEDB3EA1E4AEB7800962516 /* InstallmentScrollV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallmentScrollV.m; sourceTree = "<group>"; };
+		AFEDB3EC1E4AEB8D00962516 /* InstallmentScrollV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstallmentScrollV.xib; sourceTree = "<group>"; };
+		AFEDB3EE1E4B2BE400962516 /* InstallMentOrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallMentOrderListViewController.h; sourceTree = "<group>"; };
+		AFEDB3EF1E4B2BE400962516 /* InstallMentOrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallMentOrderListViewController.m; sourceTree = "<group>"; };
+		AFEDB3F21E4B2C3E00962516 /* InstallMentOrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallMentOrderListTableViewCell.h; sourceTree = "<group>"; };
+		AFEDB3F31E4B2C3E00962516 /* InstallMentOrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallMentOrderListTableViewCell.m; sourceTree = "<group>"; };
+		AFEDB3F41E4B2C3E00962516 /* InstallMentOrderListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstallMentOrderListTableViewCell.xib; sourceTree = "<group>"; };
+		AFEDB3F71E4B324700962516 /* AuditProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditProgressView.h; sourceTree = "<group>"; };
+		AFEDB3F81E4B324700962516 /* AuditProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditProgressView.m; sourceTree = "<group>"; };
 		AFEE03761E36EF020031E7D5 /* NewCarFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCarFilterModel.h; sourceTree = "<group>"; };
 		AFEE03771E36EF020031E7D5 /* NewCarFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCarFilterModel.m; sourceTree = "<group>"; };
 		AFEE037A1E3717300031E7D5 /* CarSelectParementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarSelectParementModel.h; sourceTree = "<group>"; };
@@ -1498,8 +1546,6 @@
 		AFEECDE21E2C67C1008403CB /* UserInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewController.m; sourceTree = "<group>"; };
 		AFEECDE41E2C925A008403CB /* AddMyCarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMyCarTableViewController.h; sourceTree = "<group>"; };
 		AFEECDE51E2C925A008403CB /* AddMyCarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMyCarTableViewController.m; sourceTree = "<group>"; };
-		AFEECDE71E2C9E89008403CB /* MyCarCoinTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCarCoinTableViewController.h; sourceTree = "<group>"; };
-		AFEECDE81E2C9E89008403CB /* MyCarCoinTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarCoinTableViewController.m; sourceTree = "<group>"; };
 		AFEECDEA1E2C9EE5008403CB /* MyCarCoinTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCarCoinTableViewCell.h; sourceTree = "<group>"; };
 		AFEECDEB1E2C9EE5008403CB /* MyCarCoinTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarCoinTableViewCell.m; sourceTree = "<group>"; };
 		AFEECDEC1E2C9EE5008403CB /* MyCarCoinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCarCoinTableViewCell.xib; sourceTree = "<group>"; };
@@ -1540,6 +1586,20 @@
 		AFEF9B021E2F666D009E9F5F /* LogisticsInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogisticsInfoTableViewCell.h; sourceTree = "<group>"; };
 		AFEF9B031E2F666D009E9F5F /* LogisticsInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogisticsInfoTableViewCell.m; sourceTree = "<group>"; };
 		AFEF9B041E2F666D009E9F5F /* LogisticsInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogisticsInfoTableViewCell.xib; sourceTree = "<group>"; };
+		AFF315A01E45630B0025200F /* Automall-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Automall-Bridging-Header.h"; sourceTree = "<group>"; };
+		AFF315A11E45630C0025200F /* NewCarDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCarDetailViewController.swift; sourceTree = "<group>"; };
+		AFF315A41E4568930025200F /* Swift-Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift-Utils.swift"; sourceTree = "<group>"; };
+		AFF315A71E4581740025200F /* NewCarDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCarDetailTableViewCell.swift; sourceTree = "<group>"; };
+		AFF315A81E4581740025200F /* NewCarDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCarDetailTableViewCell.xib; sourceTree = "<group>"; };
+		AFF315AB1E45C7610025200F /* MyCarCoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCarCoinViewController.swift; sourceTree = "<group>"; };
+		AFF555801E4C3C1100CCD0AA /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		AFF555811E4C3C1100CCD0AA /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		AFF555861E4C3DF500CCD0AA /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewCell.h; sourceTree = "<group>"; };
+		AFF555871E4C3DF500CCD0AA /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewCell.m; sourceTree = "<group>"; };
+		AFF555881E4C3DF500CCD0AA /* OrderListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableViewCell.xib; sourceTree = "<group>"; };
+		AFF5558B1E4C523F00CCD0AA /* LSLInstallMentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLInstallMentView.h; sourceTree = "<group>"; };
+		AFF5558C1E4C523F00CCD0AA /* LSLInstallMentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLInstallMentView.m; sourceTree = "<group>"; };
+		AFF5558E1E4C525900CCD0AA /* LSLInstallMentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSLInstallMentView.xib; sourceTree = "<group>"; };
 		AFF8130F1E1F5CBD00BCA9F8 /* Automall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Automall.entitlements; sourceTree = "<group>"; };
 		AFF813111E1F711400BCA9F8 /* NaviSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviSearchViewController.h; sourceTree = "<group>"; };
 		AFF813121E1F711400BCA9F8 /* NaviSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviSearchViewController.m; sourceTree = "<group>"; };
@@ -2145,6 +2205,7 @@
 		18697CDF1E1498AB000EA400 /* 选车 */ = {
 			isa = PBXGroup;
 			children = (
+				AFEDB3E41E4AA96200962516 /* Protocols */,
 				AFE7A73A1E349ACE00FD7F89 /* Models */,
 				AFE957951E16496800821748 /* Utils */,
 				AFE957911E1647C600821748 /* ViewControllers */,
@@ -2216,6 +2277,7 @@
 		1895C0361E134C1F0052D1BB /* Automall */ = {
 			isa = PBXGroup;
 			children = (
+				AFF315A31E4568290025200F /* Swift */,
 				AFE9F6031E319EF2009B5D6F /* Networking */,
 				AFEF02D51E274FBB00FA6698 /* Resource */,
 				AFE4FC341E24650D00AAC5A8 /* 3rd */,
@@ -2314,6 +2376,8 @@
 		AF8BD0EC1E14D37000E74B33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AFF555851E4C3D0500CCD0AA /* OrderViews */,
+				AFEDB3F11E4B2C0800962516 /* InstallMentOrder */,
 				AFBCCE3B1E31FADF00F73AFB /* OrderDetailCells */,
 				AF8BD0EF1E14D43B00E74B33 /* ImageAndTileButton.h */,
 				AF8BD0F01E14D43B00E74B33 /* ImageAndTileButton.m */,
@@ -2382,8 +2446,6 @@
 				AFEECDE21E2C67C1008403CB /* UserInfoTableViewController.m */,
 				AFEECDE41E2C925A008403CB /* AddMyCarTableViewController.h */,
 				AFEECDE51E2C925A008403CB /* AddMyCarTableViewController.m */,
-				AFEECDE71E2C9E89008403CB /* MyCarCoinTableViewController.h */,
-				AFEECDE81E2C9E89008403CB /* MyCarCoinTableViewController.m */,
 				AFA95D2C1E2E12130071A8F7 /* MyCarsViewController.h */,
 				AFA95D2D1E2E12130071A8F7 /* MyCarsViewController.m */,
 				AFEF9AE51E2F0655009E9F5F /* MyCarDetailTableViewController.h */,
@@ -2397,6 +2459,11 @@
 				AFEF9B001E2F65F9009E9F5F /* LogisticsInfoViewController.m */,
 				AFBCCE381E31E97E00F73AFB /* OrderDetailViewController.h */,
 				AFBCCE391E31E97E00F73AFB /* OrderDetailViewController.m */,
+				AFF315AB1E45C7610025200F /* MyCarCoinViewController.swift */,
+				AFEDB3EE1E4B2BE400962516 /* InstallMentOrderListViewController.h */,
+				AFEDB3EF1E4B2BE400962516 /* InstallMentOrderListViewController.m */,
+				AFF555801E4C3C1100CCD0AA /* OrderViewController.h */,
+				AFF555811E4C3C1100CCD0AA /* OrderViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2419,6 +2486,8 @@
 			children = (
 				AFDF3F3A1E38455B00674A41 /* ImportCarEndSelectedModel.h */,
 				AFDF3F3B1E38455B00674A41 /* ImportCarEndSelectedModel.m */,
+				AFE881861E49C18600362BA4 /* ImportCarRecommendModel.h */,
+				AFE881871E49C18600362BA4 /* ImportCarRecommendModel.m */,
 			);
 			name = ImportCarModels;
 			sourceTree = "<group>";
@@ -2643,6 +2712,8 @@
 				AFEE03791E3717020031E7D5 /* SelectCarModels */,
 				AFE51C611E35CB65000FF6C8 /* NewCarModels */,
 				AFE7A73E1E349C1100FD7F89 /* OldCarModels */,
+				AFE881791E497D2500362BA4 /* ParamentsModels.h */,
+				AFE8817A1E497D2500362BA4 /* ParamentsModels.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2658,6 +2729,8 @@
 				AFE51C6F1E35F6D0000FF6C8 /* OldCarMoneyLevelModel.m */,
 				AFE51C711E35FF9C000FF6C8 /* OldCarSeriesModel.h */,
 				AFE51C721E35FF9C000FF6C8 /* OldCarSeriesModel.m */,
+				AFE881761E4959B100362BA4 /* OldCarRecommendModel.h */,
+				AFE881771E4959B100362BA4 /* OldCarRecommendModel.m */,
 			);
 			name = OldCarModels;
 			sourceTree = "<group>";
@@ -2720,6 +2793,20 @@
 				AFDF3F341E383EDF00674A41 /* ImportCarEndSelectedCollectionViewCell.h */,
 				AFDF3F351E383EDF00674A41 /* ImportCarEndSelectedCollectionViewCell.m */,
 				AFDF3F361E383EDF00674A41 /* ImportCarEndSelectedCollectionViewCell.xib */,
+				AFF315A71E4581740025200F /* NewCarDetailTableViewCell.swift */,
+				AFF315A81E4581740025200F /* NewCarDetailTableViewCell.xib */,
+				AFE8817C1E49A33B00362BA4 /* ParementCell.h */,
+				AFE8817D1E49A33B00362BA4 /* ParementCell.m */,
+				AFE8817E1E49A33B00362BA4 /* ParementCell.xib */,
+				AFE881811E49B4AE00362BA4 /* PrarementsHeaderView.h */,
+				AFE881821E49B4AE00362BA4 /* PrarementsHeaderView.m */,
+				AFE881841E49B4C200362BA4 /* PrarementsHeaderView.xib */,
+				AFEDB3E91E4AEB7800962516 /* InstallmentScrollV.h */,
+				AFEDB3EA1E4AEB7800962516 /* InstallmentScrollV.m */,
+				AFEDB3EC1E4AEB8D00962516 /* InstallmentScrollV.xib */,
+				AFF5558B1E4C523F00CCD0AA /* LSLInstallMentView.h */,
+				AFF5558C1E4C523F00CCD0AA /* LSLInstallMentView.m */,
+				AFF5558E1E4C525900CCD0AA /* LSLInstallMentView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2785,6 +2872,10 @@
 				AFBCCE361E31DBF000F73AFB /* OldCarDetailViewController.m */,
 				AFDF3F311E38385E00674A41 /* ImportCarEndselectViewController.h */,
 				AFDF3F321E38385E00674A41 /* ImportCarEndselectViewController.m */,
+				AFF315A11E45630C0025200F /* NewCarDetailViewController.swift */,
+				AFF315A01E45630B0025200F /* Automall-Bridging-Header.h */,
+				AFEDB3E61E4AEAE900962516 /* InstallmentVC.h */,
+				AFEDB3E71E4AEAE900962516 /* InstallmentVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2807,6 +2898,26 @@
 				AFE9F6051E319F41009B5D6F /* SelectCarNetManager.m */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		AFEDB3E41E4AA96200962516 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AFEDB3E51E4AA98500962516 /* ShowSeriesProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		AFEDB3F11E4B2C0800962516 /* InstallMentOrder */ = {
+			isa = PBXGroup;
+			children = (
+				AFEDB3F21E4B2C3E00962516 /* InstallMentOrderListTableViewCell.h */,
+				AFEDB3F31E4B2C3E00962516 /* InstallMentOrderListTableViewCell.m */,
+				AFEDB3F41E4B2C3E00962516 /* InstallMentOrderListTableViewCell.xib */,
+				AFEDB3F71E4B324700962516 /* AuditProgressView.h */,
+				AFEDB3F81E4B324700962516 /* AuditProgressView.m */,
+			);
+			name = InstallMentOrder;
 			sourceTree = "<group>";
 		};
 		AFEE03791E3717020031E7D5 /* SelectCarModels */ = {
@@ -2842,6 +2953,24 @@
 				AFE7A6731E3496C100FD7F89 /* 2x */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		AFF315A31E4568290025200F /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				AFF315A41E4568930025200F /* Swift-Utils.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		AFF555851E4C3D0500CCD0AA /* OrderViews */ = {
+			isa = PBXGroup;
+			children = (
+				AFF555861E4C3DF500CCD0AA /* OrderListTableViewCell.h */,
+				AFF555871E4C3DF500CCD0AA /* OrderListTableViewCell.m */,
+				AFF555881E4C3DF500CCD0AA /* OrderListTableViewCell.xib */,
+			);
+			name = OrderViews;
 			sourceTree = "<group>";
 		};
 		AFF813101E1F70B300BCA9F8 /* Navi */ = {
@@ -2965,6 +3094,7 @@
 					1895C0331E134C1F0052D1BB = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 55WS9RWG3Z;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -3048,6 +3178,7 @@
 				18697C411E13500E000EA400 /* 13_6748_3092.png in Resources */,
 				18697C011E13500D000EA400 /* 13_6744_3092.png in Resources */,
 				18697BDA1E13500D000EA400 /* 13_6741_3101.png in Resources */,
+				AFF315AA1E4581740025200F /* NewCarDetailTableViewCell.xib in Resources */,
 				18697C391E13500E000EA400 /* 13_6747_3100.png in Resources */,
 				18697B8A1E13500D000EA400 /* 13_6736_3101.png in Resources */,
 				18697C4C1E13500E000EA400 /* 13_6748_3103.png in Resources */,
@@ -3168,6 +3299,7 @@
 				AFE7A6D91E3496C200FD7F89 /* btn_personal_3@2x.png in Resources */,
 				AFE7A6DF1E3496C200FD7F89 /* btn_personal_9@2x.png in Resources */,
 				AFE7A72E1E3496C200FD7F89 /* youhui_icon_1@2x .png in Resources */,
+				AFEDB3ED1E4AEB8D00962516 /* InstallmentScrollV.xib in Resources */,
 				18697B2B1E13500D000EA400 /* endPoint@2x.png in Resources */,
 				AFE7A6DC1E3496C200FD7F89 /* btn_personal_6@2x.png in Resources */,
 				18697BC31E13500D000EA400 /* 13_6740_3094.png in Resources */,
@@ -3237,6 +3369,7 @@
 				18697B8F1E13500D000EA400 /* 13_6736_3106.png in Resources */,
 				AFE7A5951E3455ED00FD7F89 /* OldCarDetailTableViewCell.xib in Resources */,
 				18697B711E13500D000EA400 /* 12_3374_1546.png in Resources */,
+				AFE881801E49A33B00362BA4 /* ParementCell.xib in Resources */,
 				18697BFA1E13500D000EA400 /* 13_6743_3101.png in Resources */,
 				18697B611E13500D000EA400 /* 12_3372_1546.png in Resources */,
 				18697BF91E13500D000EA400 /* 13_6743_3100.png in Resources */,
@@ -3385,7 +3518,9 @@
 				AFE7A6EE1E3496C200FD7F89 /* guanjia_icon_4@2x.png in Resources */,
 				AFE7A71E1E3496C200FD7F89 /* product_six@2x.png in Resources */,
 				AFDC5F3A1E260D7700316C68 /* ServerButton.xib in Resources */,
+				AFEDB3F61E4B2C3E00962516 /* InstallMentOrderListTableViewCell.xib in Resources */,
 				18697B501E13500D000EA400 /* 12_3369_1553.png in Resources */,
+				AFF5558F1E4C525900CCD0AA /* LSLInstallMentView.xib in Resources */,
 				18697B4F1E13500D000EA400 /* 12_3369_1552.png in Resources */,
 				18697C891E13500E000EA400 /* search@2x.png in Resources */,
 				18697B171E13500D000EA400 /* animatedCar_3.png in Resources */,
@@ -3442,10 +3577,12 @@
 				AFE7A70C1E3496C200FD7F89 /* nav_btn_jisuanqi@2x.png in Resources */,
 				18697BAD1E13500D000EA400 /* 13_6738_3104.png in Resources */,
 				18697C8B1E13500E000EA400 /* startPoint@2x.png in Resources */,
+				AFE881851E49B4C200362BA4 /* PrarementsHeaderView.xib in Resources */,
 				18697C1D1E13500D000EA400 /* 13_6745_3104.png in Resources */,
 				18697C421E13500E000EA400 /* 13_6748_3093.png in Resources */,
 				18697B5E1E13500D000EA400 /* 12_3371_1551.png in Resources */,
 				AFE7A7171E3496C200FD7F89 /* order_icon_3_@2x.png in Resources */,
+				AFF5558A1E4C3DF500CCD0AA /* OrderListTableViewCell.xib in Resources */,
 				18697C771E13500E000EA400 /* 13_6751_3098.png in Resources */,
 				18697BBF1E13500D000EA400 /* 13_6739_3106.png in Resources */,
 				AFE7A6EA1E3496C200FD7F89 /* geren_icon_tianjiatouxiang@2x.png in Resources */,
@@ -3595,6 +3732,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFF315A91E4581740025200F /* NewCarDetailTableViewCell.swift in Sources */,
 				AFEE037C1E3717300031E7D5 /* CarSelectParementModel.m in Sources */,
 				AFE4FC831E246D7400AAC5A8 /* HotBrandCollectionViewCell.m in Sources */,
 				AFE4FC741E24656E00AAC5A8 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3608,6 +3746,7 @@
 				AFE4FC6F1E24656E00AAC5A8 /* NSData+ImageContentType.m in Sources */,
 				18697CB91E135035000EA400 /* ErrorInfoUtility.m in Sources */,
 				AFE51C6D1E35EE82000FF6C8 /* OldCarFilterModel.m in Sources */,
+				AFF555891E4C3DF500CCD0AA /* OrderListTableViewCell.m in Sources */,
 				AF8BD1041E153A2900E74B33 /* PreferenceTopView.m in Sources */,
 				AFE4FC701E24656E00AAC5A8 /* SDImageCache.m in Sources */,
 				AFF813131E1F711400BCA9F8 /* NaviSearchViewController.m in Sources */,
@@ -3615,12 +3754,15 @@
 				AFECB2441E3081810063737A /* EndSelectedCarViewController.m in Sources */,
 				18697C9F1E13501D000EA400 /* MoreMenuView.m in Sources */,
 				AFEE038E1E3752CE0031E7D5 /* OldCarYearModel.m in Sources */,
+				AFE881881E49C18600362BA4 /* ImportCarRecommendModel.m in Sources */,
 				AFE4FC7C1E24656E00AAC5A8 /* UIImageView+WebCache.m in Sources */,
+				AFE881831E49B4AE00362BA4 /* PrarementsHeaderView.m in Sources */,
 				AFEE03851E373AA10031E7D5 /* CarMoneyLevelModel.m in Sources */,
 				AFDC5F401E26284500316C68 /* FinancialViewController.m in Sources */,
 				AFE4FC451E24653B00AAC5A8 /* TAAbstractDotView.m in Sources */,
 				AFF8131A1E1F851F00BCA9F8 /* PersonalMainViewController.m in Sources */,
 				AFE9F6011E319A7C009B5D6F /* OldCarBrandSyleTableViewCell.m in Sources */,
+				AFEDB3F01E4B2BE400962516 /* InstallMentOrderListViewController.m in Sources */,
 				AF1B2E7B1E2329F700AFD33B /* UIColor+GodCarColor.m in Sources */,
 				18697CBA1E135035000EA400 /* ALView+PureLayout.m in Sources */,
 				AF1B2E7E1E23428E00AFD33B /* PersonalTableViewCell.m in Sources */,
@@ -3641,10 +3783,12 @@
 				AFEE037F1E3717810031E7D5 /* CarLevelModel.m in Sources */,
 				AF1B2E8D1E236EDF00AFD33B /* HotCollectionViewCell.m in Sources */,
 				AFE4FC801E246A8A00AAC5A8 /* ImportedCarViewController.m in Sources */,
+				AFEDB3F51E4B2C3E00962516 /* InstallMentOrderListTableViewCell.m in Sources */,
 				AFEF9B051E2F666D009E9F5F /* LogisticsInfoTableViewCell.m in Sources */,
 				AFE4FC481E24653B00AAC5A8 /* TAPageControl.m in Sources */,
 				AFEF9AFD1E2F5E20009E9F5F /* MyInformationTableViewCell.m in Sources */,
 				AFECB23A1E3051FC0063737A /* CarFileterTableViewCell.m in Sources */,
+				AFF555831E4C3C1100CCD0AA /* OrderViewController.m in Sources */,
 				18697CE41E149913000EA400 /* SCWHomePageViewController.m in Sources */,
 				AFEE03881E3743030031E7D5 /* CarDisplacementModel.m in Sources */,
 				18697CED1E1499E0000EA400 /* SCWFavorableViewController.m in Sources */,
@@ -3655,6 +3799,7 @@
 				AFE957A11E165F7E00821748 /* TitleAndCollectionView.m in Sources */,
 				AFE4FC4A1E24653B00AAC5A8 /* SDCycleScrollView.m in Sources */,
 				AFEE03821E373A510031E7D5 /* NewCarSpeedBoxModel.m in Sources */,
+				AFEDB3EB1E4AEB7800962516 /* InstallmentScrollV.m in Sources */,
 				AFEF02D31E2732F700FA6698 /* FinancialCollectionViewCell.m in Sources */,
 				AFE4FC751E24656E00AAC5A8 /* SDWebImageManager.m in Sources */,
 				AFECB2531E3097970063737A /* NewCarEndSelectedViewController.m in Sources */,
@@ -3666,23 +3811,27 @@
 				AFE9579B1E164CE900821748 /* UsedCarViewController.m in Sources */,
 				AFE4FC7D1E24656E00AAC5A8 /* UIView+WebCacheOperation.m in Sources */,
 				AFEECDF41E2CC7F5008403CB /* InsuranceCaculatorTableViewCell.m in Sources */,
+				AFEDB3E81E4AEAE900962516 /* InstallmentVC.m in Sources */,
 				AFE51C6A1E35DE79000FF6C8 /* NewCarHotType.m in Sources */,
 				AFB611151E1B90DB0032C482 /* BrandViewController.m in Sources */,
 				AFE9578E1E16333C00821748 /* PreferenceSetting.m in Sources */,
-				AFEECDE91E2C9E89008403CB /* MyCarCoinTableViewController.m in Sources */,
 				AFE83B681E2882FD005A9243 /* LoanCalculatorForCarViewController.m in Sources */,
+				AFF315A21E45630C0025200F /* NewCarDetailViewController.swift in Sources */,
 				AFEECDE31E2C67C1008403CB /* UserInfoTableViewController.m in Sources */,
+				AFF315AC1E45C7610025200F /* MyCarCoinViewController.swift in Sources */,
 				AFE9579E1E164CFC00821748 /* NewCarViewController.m in Sources */,
 				AFE83B651E287E41005A9243 /* CalculatorForCarViewController.m in Sources */,
 				AFEE038B1E37431C0031E7D5 /* CarSpeedBoxModel.m in Sources */,
 				AFEE03911E3752EE0031E7D5 /* OldCarKMModel.m in Sources */,
 				AFE7A5941E3455ED00FD7F89 /* OldCarDetailTableViewCell.m in Sources */,
 				AFF813171E1F835800BCA9F8 /* EmulatorNaviViewController.m in Sources */,
+				AFE8817B1E497D2500362BA4 /* ParamentsModels.m in Sources */,
 				AFECB2411E306EA50063737A /* MoneySelectViewController.m in Sources */,
 				18697CA31E135029000EA400 /* SpeechSynthesizer.m in Sources */,
 				AFEF9AED1E2F0B50009E9F5F /* MyCarDetailTableViewCell.m in Sources */,
 				AF8BD1091E1545A500E74B33 /* UIView+ViewCanGetParentVC.m in Sources */,
 				AFE4FC761E24656E00AAC5A8 /* SDWebImagePrefetcher.m in Sources */,
+				AFEDB3F91E4B324700962516 /* AuditProgressView.m in Sources */,
 				AF1B2E841E2361DC00AFD33B /* GDNewCarViewController.m in Sources */,
 				AFECB24F1E30912F0063737A /* MoneySelectTableViewCell.m in Sources */,
 				AFDC5F381E260D6B00316C68 /* ServerButton.m in Sources */,
@@ -3705,9 +3854,11 @@
 				18697CB81E135035000EA400 /* CommonUtility.m in Sources */,
 				AFECB23E1E3060420063737A /* CoustomSectionIndexTableView.m in Sources */,
 				AF8BD0F41E14D44C00E74B33 /* UIView+Rect.m in Sources */,
+				AFF315A51E4568930025200F /* Swift-Utils.swift in Sources */,
 				AFBCCE3F1E31FB4100F73AFB /* OrderDetailTableViewCell.m in Sources */,
 				AFE4FC461E24653B00AAC5A8 /* TAAnimatedDotView.m in Sources */,
 				AFE4FC491E24653B00AAC5A8 /* SDCollectionViewCell.m in Sources */,
+				AFE8817F1E49A33B00362BA4 /* ParementCell.m in Sources */,
 				AFEECDE01E2C5DAB008403CB /* BrandSelectDetaileViewController.m in Sources */,
 				AFDC5F3D1E26187700316C68 /* SortToolView.m in Sources */,
 				18697CBB1E135035000EA400 /* NSArray+PureLayout.m in Sources */,
@@ -3715,6 +3866,7 @@
 				AFE83B5F1E287268005A9243 /* BrandCarSelectViewController.m in Sources */,
 				AFE83B621E2875AF005A9243 /* InsuranceForCarViewController.m in Sources */,
 				AFEF02C71E27097800FA6698 /* TitleView.m in Sources */,
+				AFE881781E4959B100362BA4 /* OldCarRecommendModel.m in Sources */,
 				18697CBC1E135035000EA400 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				18697CBE1E135035000EA400 /* MANaviAnnotationView.m in Sources */,
 				AFEF9AF91E2F5D80009E9F5F /* MyInformationViewController.m in Sources */,
@@ -3722,6 +3874,7 @@
 				AFE4FC6E1E24656E00AAC5A8 /* MKAnnotationView+WebCache.m in Sources */,
 				AFBCCE3A1E31E97E00F73AFB /* OrderDetailViewController.m in Sources */,
 				18697C9B1E13501D000EA400 /* LineDashPolyline.m in Sources */,
+				AFF5558D1E4C523F00CCD0AA /* LSLInstallMentView.m in Sources */,
 				AFE51C701E35F6D0000FF6C8 /* OldCarMoneyLevelModel.m in Sources */,
 				AFE957881E15E6AC00821748 /* orderView.m in Sources */,
 				AFE9F5FD1E319998009B5D6F /* OldCarBrandSyleViewController.m in Sources */,
@@ -3879,7 +4032,9 @@
 			baseConfigurationReference = F71EDE0ECBB9764C4084ADAD /* Pods-Automall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Automall/Automall.entitlements;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 55WS9RWG3Z;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Automall/PrefixHeader.pch";
 				INFOPLIST_FILE = Automall/Info.plist;
@@ -3887,6 +4042,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SCWTechnologyCompany.Automall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Automall/选车/ViewControllers/Automall-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -3895,7 +4053,9 @@
 			baseConfigurationReference = 8D635E8446B2226A53CB8C92 /* Pods-Automall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Automall/Automall.entitlements;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 55WS9RWG3Z;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Automall/PrefixHeader.pch";
 				INFOPLIST_FILE = Automall/Info.plist;
@@ -3903,12 +4063,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SCWTechnologyCompany.Automall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Automall/选车/ViewControllers/Automall-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		1895C0651E134C1F0052D1BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = AutomallTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -3921,6 +4084,7 @@
 		1895C0661E134C1F0052D1BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = AutomallTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -3933,6 +4097,7 @@
 		1895C0681E134C1F0052D1BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = AutomallUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SCWTechnologyCompany.AutomallUITests;
@@ -3944,6 +4109,7 @@
 		1895C0691E134C1F0052D1BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = AutomallUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SCWTechnologyCompany.AutomallUITests;

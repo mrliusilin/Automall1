@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OldCarFilterModel.h"
 
+#import "UIImageView+WebCache.h"
 @interface EndSlectedCarTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;

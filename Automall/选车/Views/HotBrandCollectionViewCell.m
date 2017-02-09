@@ -7,7 +7,7 @@
 //
 
 #import "HotBrandCollectionViewCell.h"
-
+#import "UIImageView+WebCache.h"
 @implementation HotBrandCollectionViewCell
 
 -(void)layoutSubviews
@@ -32,6 +32,8 @@
 {
     if (!_imgView) {
         _imgView = [UIImageView new];
+        _imgView.contentMode = UIViewContentModeCenter;
+        _imgView.clipsToBounds = YES;
     }
     return _imgView;
 }
@@ -43,6 +45,14 @@
         _titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE_CONTENT];
     }
     return _titleLabel;
+}
+
+-(void)setModel:(NewCarHotBrandModel *)model
+{
+    _model = model;
+    NSString * str =STRADD(HTTPNewCarImageRoot, _model.GODCAR028006);
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:str]];
+    self.titleLabel.text = _model.GODCAR028002;
 }
 
 @end

@@ -34,6 +34,11 @@
     return _mainTableView;
 }
 
+-(void)setModel:(OldCarBrandModel *)model
+{
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.mainTableView];

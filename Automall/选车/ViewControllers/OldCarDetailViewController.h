@@ -7,7 +7,7 @@
 //
 
 #import "ParentsViewController.h"
-
+#import "OldCarFilterModel.h"
 @interface OldCarDetailViewController : ParentsViewController
-
+@property(nonatomic,strong)OldCarFilterModel * model;
 @end

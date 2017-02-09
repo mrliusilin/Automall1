@@ -10,13 +10,16 @@
 
 #import "ImportCarEndSelectedCollectionViewCell.h"
 #import "ImportCarEndSelectedModel.h"
+#import "NewCarFilterModel.h"
 #import "CarFileterViewController.h"
+#import "Automall-Swift.h"
 
 @interface ImportCarEndselectViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     NSMutableDictionary * _parementsDic;
     NSInteger _page;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -41,11 +44,20 @@
     vc.backBlock = ^(NSDictionary * parements)
     {
         _parementsDic = parements.mutableCopy;
-        [weakSelf.dataArray removeAllObjects];
         [weakSelf requestDataWithParements:_parementsDic];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(NSMutableDictionary *)prasDic
+{
+    return _parementsDic;
+}
+
+-(void)setPrasDic:(NSMutableDictionary *)prasDic
+{
+    _parementsDic = prasDic;
 }
 
 -(UICollectionViewFlowLayout *)collectionViewLayout
@@ -81,16 +93,23 @@
 -(void)requestDataWithParements:(NSDictionary*)dic
 {
     [SelectCarNetManager getRequestForImportCarsWithFileterParements:dic Success:^(id responseObject) {
-        self.dataArray = [ImportCarEndSelectedModel mj_objectArrayWithKeyValuesArray:responseObject];
+        self.dataArray = [NewCarFilterModel mj_objectArrayWithKeyValuesArray:responseObject];
         [self.collectionView reloadData];
     }];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat tabBarH = self.tabBarController.tabBar.bounds.size.height;
+    self.bottom.constant = -tabBarH;
     [self initializeUI];
-    [self requestDataWithParements:nil];
-    // Do any additional setup after loading the view.
+    [self requestDataWithParements:self.prasDic];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.bottom.constant = 0;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -103,6 +122,14 @@
     ImportCarEndSelectedCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImportCarEndSelectedCollectionViewCell" forIndexPath:indexPath];
     [cell setModel:self.dataArray[indexPath.row]];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewCarDetailViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"NewCarDetailViewController"];
+    vc.model = self.dataArray[indexPath.row];
+    [vc setStyleWithStye:1];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

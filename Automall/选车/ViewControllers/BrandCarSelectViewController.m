@@ -10,168 +10,159 @@
 #import "GDTableViewHeaderFooterView.h"
 #import "SelcteCarTableViewCell.h"
 #import "BrandeCarStyleSelectViewController.h"
-
+#import "NSString+Chines.h"
 #import "CoustomSectionIndexTableView.h"
 
 const CGFloat top_spare = 20,bottom_spare = 50;
 #define SECTION_STAR_TAG 100
 @interface BrandCarSelectViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,strong)CoustomSectionIndexTableView * sectionTableView;
+@property(nonatomic,strong)CoustomSectionIndexTableView * selectBrandView;
 
-@property(nonatomic,strong)UITableView * mainTableView;
+@property(nonatomic,strong)NSMutableArray * dataSortedFirstLatinArr;
 
-@property(nonatomic,strong)UIView * sectionIndexView;
-
-@property(nonatomic,strong)NSMutableArray * tableViewIndexArr;
+@property(nonatomic,strong)NSMutableDictionary * dataDic;
 
 @end
 
 @implementation BrandCarSelectViewController
 
--(CoustomSectionIndexTableView *)sectionTableView
+-(CoustomSectionIndexTableView *)selectBrandView
 {
-    if (!_sectionTableView) {
-        _sectionTableView = [[CoustomSectionIndexTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_Width, SCREEN_Height - 64)];
-        _sectionTableView.mainTableView.delegate = self;
-        _sectionTableView.mainTableView.dataSource = self;
+    if (!_selectBrandView) {
+        _selectBrandView = [[CoustomSectionIndexTableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_Width, SCREEN_Height - 64)];
+        _selectBrandView.mainTableView.delegate =  self;
+        _selectBrandView.mainTableView.dataSource = self;
     }
-    return _sectionTableView;
+    return _selectBrandView;
 }
 
--(UIView *)sectionIndexView
+-(void)requestData
 {
-    if (!_sectionIndexView) {
-        _sectionIndexView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 400)];
-        _sectionIndexView.backgroundColor = [UIColor clearColor];
+    __weak typeof (self) weakSelf = self;
+    [SelectCarNetManager postRequestForOldCarsBrandseccess:^(id responseObject) {
+        NSArray * arr = responseObject;
+        NSMutableArray * array = @[].mutableCopy;
+        array = [OldCarBrandModel mj_objectArrayWithKeyValuesArray:arr];
+        weakSelf.dataDic = [weakSelf setupDataDicWith:array];
+        [weakSelf sortDic:self.dataDic];
+        weakSelf.selectBrandView.tableViewIndexArr = self.dataSortedFirstLatinArr;
+        [weakSelf.selectBrandView.mainTableView reloadData];
+        NSLog(@"dd");
+    }];
+}
+
+-(NSMutableDictionary*)setupDataDicWith:(NSMutableArray*)arr
+{
+    NSMutableDictionary * muDic = @{}.mutableCopy;
+    for ( int index = 0; index < arr.count; index ++) {
+        OldCarBrandModel * model = arr[index];
+        NSString * firstStr = [NSString firstLatinOfChinese:model.name];
+        if (!muDic[firstStr]) {
+            [muDic setObject:@[model].mutableCopy forKey:firstStr];
+        }else
+        {
+            [((NSMutableArray*)muDic[firstStr]) addObject:model];
+        }
     }
-    return _sectionIndexView;
+    //    self.dataDic = muDic;
+    NSLog(@"ddd");
+    return muDic;
 }
 
--(UITableView *)mainTableView
+-(void)sortDic:(NSMutableDictionary *)dic
 {
-    if (!_mainTableView) {
-        _mainTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-        _mainTableView.delegate = self;
-        _mainTableView.dataSource = self;
-        _mainTableView.sectionHeaderHeight = 30;
-        _mainTableView.sectionFooterHeight = 0.001;
-        
-        [_mainTableView registerClass:[GDTableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"GDTableViewHeaderFooterView"];
-        [_mainTableView registerClass:[SelcteCarTableViewCell class] forCellReuseIdentifier:@"SelcteCarTableViewCell"];
+    NSMutableArray * allKeys = [dic allKeys].mutableCopy;
+    for (NSInteger indexX = 0; indexX < allKeys.count; indexX ++ ) {
+        for (NSInteger indexY = allKeys.count - 1 ; indexY >indexX ; indexY --) {
+            char c1 = [((NSString*)allKeys[indexY]) characterAtIndex:0];
+            char c2 = [((NSString*)allKeys[indexY - 1]) characterAtIndex:0];
+            if (c1 < c2) {
+                NSString * str = ((NSString*)allKeys[indexY]);
+                allKeys[indexY] = allKeys[indexY - 1];
+                allKeys[indexY - 1] = str;
+            }
+        }
     }
-    return _mainTableView;
-}
-
-#pragma mark -- Action
--(void)secrionViewAddBT
-{
-    for (int index = 0; index < self.tableViewIndexArr.count; index ++ ) {
-        UIButton * bt = [[UIButton alloc] initWithFrame:CGRectMake(0, index * (self.sectionIndexView.height - top_spare - bottom_spare) / self.tableViewIndexArr.count + top_spare, self.sectionIndexView.width, (self.sectionIndexView.height - top_spare - bottom_spare) / self.tableViewIndexArr.count)];
-        [self.sectionIndexView addSubview:bt];
-        [bt setTitle:self.tableViewIndexArr[index] forState:UIControlStateNormal];
-        bt.tag = SECTION_STAR_TAG + index;
-        [bt setTitleColor:FONT_COLOR_TEXT_BLACK forState:UIControlStateNormal];
-        [bt addTarget:self action:@selector(scrollToSection:) forControlEvents:UIControlEventTouchUpInside];
-    }
-}
-
--(void)scrollToSection:(UIButton * )sender
-{
-//    NSInteger index = sender.tag - SECTION_STAR_TAG;
-//    
-//    [self.mainTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-}
-
--(void)setupUI
-{
-//    [self.view addSubview:self.mainTableView];
-//    [self.view addSubview:self.sectionIndexView];
-//    [self.sectionIndexView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.mas_equalTo(30);
-//        make.top.and.bottom.mas_equalTo(self.view).mas_offset(0);
-//        make.right.mas_equalTo(self.view).mas_offset(-10);
-//    }];
-    [self.view addSubview:self.sectionTableView];
+    
+    self.dataSortedFirstLatinArr = allKeys;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.sectionTableView.tableViewIndexArr = ({
-        NSMutableArray * arr = @[@"热"].mutableCopy;
-        unichar cs['Z' - 'A' +1],c;
-        for (c = 'A'; c <= 'Z'; c ++ ) {
-            cs[c - 'A'] = c;
-            [arr addObject:[NSString stringWithFormat:@"%C",c]];
-        }
-        arr;
-    });
-    [self setupUI];
-}
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-//    self.mainTableView.frame = self.view.bounds;
-//    [self secrionViewAddBT];
-//    self.sectionTableView.frame = self.view.bounds;
+    self.title = @"选择品牌";
+    
+    self.navigationBarView.backgroundColor = HEXCOLOR(0xf9f9f9);
+    self.statubarClor = HEXCOLOR(0xf9f9f9);
+    //    self.navigationBarViewTintleColor = PERSONAL_USERHEADERVIEW_BACKCOLOR;
+    [self.navigationBarView.layer addSublayer:({
+        CAShapeLayer * layer = [CAShapeLayer layer];
+        layer.path = [UIBezierPath bezierPathWithRect:CGRectMake(0, self.navigationBarView.height - 1, self.navigationBarView.width, 1)].CGPath;
+        layer.fillColor = COLOR_BACK_GRAY.CGColor;
+        layer;
+    })];
+    
+    [self.view addSubview:self.selectBrandView];
+    [self requestData];
+    // Do any additional setup after loading the view.
 }
 
--(void)viewWillDisappear:(BOOL)animated
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super viewWillDisappear:animated];
+    if (tableView != self.selectBrandView.mainTableView) {
+        return 1;
+    }
+    return self.selectBrandView.tableViewIndexArr.count;
 }
 
-#pragma mark -- UITableViewDelegate/UITableviewDataSource
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView == self.selectBrandView.mainTableView) {
+        return 30;
+    }
+    return 0;
+}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if (tableView != self.selectBrandView.mainTableView) {
+        return nil;
+    }
     GDTableViewHeaderFooterView * sectionHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"GDTableViewHeaderFooterView"];
     return sectionHeader;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
+    if (tableView != self.selectBrandView.mainTableView) {
+        return;
+    }
     GDTableViewHeaderFooterView * sectionHeader = view;
-    sectionHeader.titeLB.text = self.sectionTableView.tableViewIndexArr[section];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 60;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.sectionTableView.tableViewIndexArr.count;
+    sectionHeader.titeLB.text = self.selectBrandView.tableViewIndexArr[section];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSMutableArray * arr = self.dataDic[self.dataSortedFirstLatinArr[section]];
+    return arr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"SelcteCarTableViewCell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"SelcteCarTableViewCell"];
-    }
-    cell.imageView.image = [UIImage imageNamed:@"11_1684_773"];
-    cell.textLabel.text = @"特斯拉";
-    cell.imageView.X = 1;
+    SelcteCarTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"SelcteCarTableViewCell"];
+    NSArray * arr = self.dataDic[self.dataSortedFirstLatinArr[indexPath.section]];
+    [cell setModel:arr[indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryNone;
     return cell;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController pushViewController:[BrandeCarStyleSelectViewController new] animated:YES];
+    BrandeCarStyleSelectViewController * vc = [BrandeCarStyleSelectViewController new];
+    NSArray * arr = self.dataDic[self.dataSortedFirstLatinArr[indexPath.section]];
+    vc.model = arr[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface NewCarEndSelectedViewController : ParentsViewController
 
+@property(nonatomic,strong)NSMutableDictionary * parementDic;
+
 @end

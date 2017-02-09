@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.mainTableView];
+    [self removeGestureForEndEditing];
     // Do any additional setup after loading the view.
 }
 
@@ -72,11 +73,10 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-//-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-//{
-//    
-//    return NO;
-//}
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return YES;
+}
 
 
 @end

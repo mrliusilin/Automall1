@@ -51,8 +51,8 @@
 -(void)setModel:(NewCarHotType *)model
 {
     _model = model;
-    NSString * imgStr = STRADD(HTTPNewCarHotTypes, _model.godcar047003);
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:imgStr]];
+    NSString * imgStr = STRADD(HTTPNewCarImageRoot, _model.godcar047003);
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:[UIImage imageNamed:@"个人选中@2x"]];
     self.titleLabel.text = _model.godcar029002;
 }
 

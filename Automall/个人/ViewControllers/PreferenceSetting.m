@@ -58,6 +58,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PersonalTableViewCell"];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    ((PersonalTableViewCell*)cell).titleX = 31;
     cell.textLabel.text = settingsArr[indexPath.row];
     return cell;
 }

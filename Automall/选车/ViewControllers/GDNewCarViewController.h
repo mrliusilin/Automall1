@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ShowSeriesProtocol.h"
+
 @interface GDNewCarViewController : UIViewController
+
+@property(nonatomic,weak)id<ShowSeriesProtocol> delegate;
 
 @end

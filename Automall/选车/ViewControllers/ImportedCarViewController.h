@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ShowSeriesProtocol.h"
 @interface ImportedCarViewController : UIViewController
-
+@property(nonatomic,weak)id<ShowSeriesProtocol> delegate;
 @end

@@ -8,7 +8,7 @@
 
 #import "NewCarEndSelectedViewController.h"
 #import "NewCarEndSelectedCollectionViewCell.h"
-
+#import "Automall-Swift.h"
 #import "CarFileterViewController.h"
 
 @interface NewCarEndSelectedViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -22,6 +22,7 @@
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @end
 
 @implementation NewCarEndSelectedViewController
@@ -82,6 +83,20 @@
     }];
 }
 
+-(NSMutableDictionary *)parementDic
+{
+    return _parementsDic;
+}
+
+-(void)setParementDic:(NSMutableDictionary *)parementDic
+{
+    if (!_parementsDic) {
+        _parementsDic = @{@"p":@"1"}.mutableCopy;
+    }
+    [_parementsDic addEntriesFromDictionary:parementDic];
+    [self requestData];
+}
+
 -(void)requestData
 {
     [self requestData:_parementsDic];
@@ -108,11 +123,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat tabBarH = self.tabBarController.tabBar.bounds.size.height;
+    self.bottom.constant = -tabBarH;
     [self setupUI];
     _page = 1;
-    _parementsDic = @{@"p":@"1"}.mutableCopy;
+    if (!_parementsDic) {
+        _parementsDic = @{@"p":@"1"}.mutableCopy;
+    }
     [self requestData];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.bottom.constant = 0;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -125,6 +150,13 @@
     NewCarFilterModel * model = self.dataArray[indexPath.row];
     [cell setModel:model];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewCarDetailViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"NewCarDetailViewController"];
+    vc.model = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

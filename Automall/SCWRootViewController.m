@@ -38,9 +38,10 @@ struct utsname systemInfo;
     self.view.backgroundColor = [UIColor whiteColor];
     UIColor* tabBarBackground = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     [self.tabBar setBarTintColor:tabBarBackground];
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    
+//    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
     //创建子控制器
     SCWHomePageViewController *SCWHomePageVC = [[SCWHomePageViewController alloc]init];
     SCWHomePageVC.tabBarItem.title = @"首页";

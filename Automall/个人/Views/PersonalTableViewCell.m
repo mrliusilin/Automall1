@@ -17,6 +17,8 @@
 
 @implementation PersonalTableViewCell
 
+@synthesize titleX = _titleX;
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -48,13 +50,28 @@
     return self;
 }
 
+-(void)setTitleX:(CGFloat)titleX
+{
+    _titleX = titleX;
+    self.textLabel.X = titleX;
+    [self setNeedsDisplay];
+}
+
+-(CGFloat)titleX
+{
+    if (_titleX == 0 || !_titleX) {
+        _titleX = 12;
+    }
+    return _titleX;
+}
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     self.bottomLine.fillColor = HEXCOLOR(0xf0f0f0).CGColor;
     self.bottomLine.path = [UIBezierPath bezierPathWithRect:CGRectMake(0, self.height, self.width, 1)].CGPath;
     [self.layer addSublayer:self.bottomLine];
-    self.textLabel.X = 12;
+    self.textLabel.X = self.titleX;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

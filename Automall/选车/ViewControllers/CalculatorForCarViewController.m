@@ -70,7 +70,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.titleView = self.segment;
     [self setupUI];
-    // Do any additional setup after loading the view.
 }
 
 -(void)dealloc

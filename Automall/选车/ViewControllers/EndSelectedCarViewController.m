@@ -22,10 +22,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property(nonatomic,strong)NSMutableArray * dataArray;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 
 @end
 
 @implementation EndSelectedCarViewController
+
 - (IBAction)sellWellTap:(UITapGestureRecognizer *)sender {
 }
 - (IBAction)selectFilterShow:(UITapGestureRecognizer *)sender {
@@ -35,7 +37,8 @@
     {
         NSMutableDictionary * ddic = dic.mutableCopy;
         [ddic removeObjectForKey:@"p"];
-        [weakSelf requestData:ddic];
+        weakSelf.prasDic = ddic;
+        [weakSelf requestData:self.prasDic];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     [vc setHidesBottomBarWhenPushed:YES];
@@ -50,10 +53,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat tabBarH = self.tabBarController.tabBar.bounds.size.height;
+    self.bottom.constant = -tabBarH;
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
-    [self requestData:nil];
+    [self requestData:self.prasDic];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.bottom.constant = 0;
+}
+
+
+-(NSMutableDictionary *)prasDic
+{
+    if (!_prasDic) {
+        _prasDic = @{}.mutableCopy;
+    }
+    return _prasDic;
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+//    self.tableView.height = 
+//    self.tabBarController.tabBar.hidden = YES;
 }
 
 -(void)requestData:(NSDictionary*)parements
@@ -72,15 +99,6 @@
         [weakSelf.tableView reloadData];
     }];
 }
-
-//-(void)requestForDataWithFilter:(NSString*)filter
-//{
-//    __weak typeof (self) weakSelf = self;
-//    [SelectCarNetManager getRequestForOldCarWithFilter:filter Success:^(id responseObject) {
-//        weakSelf.dataArray = [OldCarFilterModel mj_objectArrayWithKeyValuesArray:responseObject];
-//        [weakSelf.tableView reloadData];
-//    }];
-//}
 
 #pragma mark -- UITableViewDelegate/UITableviewDataSource
 
@@ -115,6 +133,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OldCarDetailViewController * vc =[[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"OldCarDetailViewController"];
+    vc.model = self.dataArray[indexPath.section];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -12,6 +12,10 @@
 #import "UIView+Rect.h"
 #import "PersonalTableViewCell.h"
 
+#import "InstallMentOrderListViewController.h"
+
+#import "Automall-Swift.h"
+
 /**ViewControllers*/
 #import "PreferenceSetting.h"
 #import "UserInfoTableViewController.h"
@@ -242,8 +246,8 @@
 #pragma mark -- Action
 -(void)jumpToConServer:(UIButton*)sender
 {
-    UIViewController *vc =[UIViewController new];
-    vc.view.backgroundColor = [UIColor whiteColor];
+    MyCarCoinViewController * vc = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"MyCarCoinViewController"];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -382,6 +386,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        InstallMentOrderListViewController * vc = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"InstallMentOrderListViewController"];
+        [vc setHidesBottomBarWhenPushed: YES];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     if (indexPath.section == 2) {
         switch (indexPath.row) {
             case 0:{

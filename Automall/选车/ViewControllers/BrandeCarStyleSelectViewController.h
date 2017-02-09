@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "OldCarBrandModel.h"
 @interface BrandeCarStyleSelectViewController : ParentsViewController
+
+@property(nonatomic,strong)OldCarBrandModel * model;
 
 @end

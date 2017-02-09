@@ -16,7 +16,7 @@
     // Initialization code
 }
 
--(void)setModel:(ImportCarEndSelectedModel *)model
+-(void)setModel:(NewCarFilterModel *)model
 {
     _model = model;
     NSString * imgStr = STRADD(HTTPNewCarImageRoot, _model.GODCAR022003);

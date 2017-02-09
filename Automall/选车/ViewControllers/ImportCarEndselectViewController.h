@@ -10,4 +10,6 @@
 
 @interface ImportCarEndselectViewController : ParentsViewController
 
+@property(nonatomic,strong)NSMutableDictionary * prasDic;
+
 @end

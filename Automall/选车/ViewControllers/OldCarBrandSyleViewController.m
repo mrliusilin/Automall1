@@ -44,6 +44,12 @@
     [self requestDataWithBrandID:brandID];
 }
 
+-(void)setBrandName:(NSString *)brandName
+{
+    _brandName = brandName;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 -(void)requestDataWithBrandID:(NSString*)brandID
 {
     __weak typeof(self) weakSelf = self;

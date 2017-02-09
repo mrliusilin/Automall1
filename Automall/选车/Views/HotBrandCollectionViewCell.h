@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NewCarHotBrandModel.h"
 @interface HotBrandCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,strong) UIImageView * imgView;
 
 @property(nonatomic,strong) UILabel * titleLabel;
+
+@property(nonatomic,strong)NewCarHotBrandModel * model;
 
 @end

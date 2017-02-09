@@ -47,7 +47,7 @@
 -(void)setModel:(NewCarHotBrandModel *)model
 {
     _model = model;
-    NSString * str =STRADD(HTTPNewCarImageRoot, _model.GODCAR028003);
+    NSString * str =STRADD(HTTPNewCarImageRoot, _model.GODCAR028006);
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:str]];
     self.titleLB.text = _model.GODCAR028002;
 }

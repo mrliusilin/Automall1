@@ -10,6 +10,10 @@
 #import "SDCycleScrollView.h"
 #import "OldCarDetailTableViewCell.h"
 #import "GDTableViewHeaderFooterView.h"
+#import "InstallmentVC.h"
+#import "ParameterOfCarViewController.h"
+//model
+#import "OldCarRecommendModel.h"
 
 @interface OldCarDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *cycleView;
@@ -18,14 +22,15 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *pageLB;
 
+@property(nonatomic,strong)NSMutableArray * recommendDataArry;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
+
 @end
 
 @implementation OldCarDetailViewController
 
 -(void)initializeUI
 {
-//    self.cycleView.frame = CGRectMake(0, 0, SCREEN_Width, 160);
-//    self.tableView.tableHeaderView = self.cycleView;
     [self.tableView  registerClass:[OldCarDetailTableViewCell1 class] forCellReuseIdentifier:@"OldCarDetailTableViewCell1"];
     [self.tableView  registerClass:[OldCarDetailTableViewCell2 class] forCellReuseIdentifier:@"OldCarDetailTableViewCell2"];
     [self.tableView  registerClass:[OldCarDetailTableViewCell3 class] forCellReuseIdentifier:@"OldCarDetailTableViewCell3"];
@@ -39,11 +44,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat tabBarH = self.tabBarController.tabBar.bounds.size.height;
+    self.bottom.constant = - tabBarH;
     [self initializeUI];
+    [self requestDataForRecommend];
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 7) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.bottom.constant = 0;
+}
+
+#pragma mark -- dataRequest
+-(void)requestDataForRecommend
+{
+    [SelectCarNetManager getRequestOldCarRecommendSuccess:^(id responseObject) {
+        self.recommendDataArry = [OldCarRecommendModel mj_objectArrayWithKeyValuesArray:responseObject];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+    }];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+//    self.view.height = SCREEN_Height - 64;
+//    self.tabBarController.tabBar.hidden = YES;
+}
+
 - (IBAction)seeCar:(UITapGestureRecognizer *)sender {
 }
 - (IBAction)buyCar:(UITapGestureRecognizer *)sender {
+    
+    InstallmentVC * vc = [InstallmentVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark -- UITableViewDelegate/UITableviewDataSource
@@ -95,7 +132,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160;
+    if (indexPath.section == 0) {
+        return 120;
+    }
+    if (indexPath.section == 1) {
+        return 160;
+    }
+    return 100;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -105,7 +148,7 @@
             return 1;
             break;
         case 2:
-            return 14;
+            return self.recommendDataArry.count;
             break;
         default:
             break;
@@ -119,22 +162,42 @@
         case 0:
         {
             OldCarDetailTableViewCell1 * cell = [tableView dequeueReusableCellWithIdentifier:@"OldCarDetailTableViewCell1"];
+            cell.titleLB.text = self.model.GODCAR001005;
+            cell.moneyLB.text = [NSString stringWithFormat:@"%ld万",self.model.USEDCAR001003];
             return cell;
         }
             break;
         case 1:
         {
             OldCarDetailTableViewCell2 * cell = [tableView dequeueReusableCellWithIdentifier:@"OldCarDetailTableViewCell2"];
+            [cell.showMoreBT addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
+            cell.subV1.titleLB.text = [NSString stringWithFormat:@"%@万公里",self.model.USEDCAR001007];
+            cell.subV2.titleLB.text = @"2015-02";
+            cell.subV3.titleLB.text = @"国VI";
+            cell.subV4.titleLB.text = @"自动/2.0L";
+            cell.subV5.titleLB.text = @"成都";
+            cell.subV6.titleLB.text = @"黑色";
             return cell;
         }
         default:
         {
             OldCarDetailTableViewCell3 * cell = [tableView dequeueReusableCellWithIdentifier:@"OldCarDetailTableViewCell3"];
+            [cell setModel:self.recommendDataArry[indexPath.row]];
             return cell;
         }
             break;
     }
     return [UITableViewCell new];
+}
+
+-(void)showDetail:(UIButton*)sender
+{
+    ParameterOfCarViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"ParameterOfCarViewController"];
+    NewCarFilterModel * useModel = [NewCarFilterModel new];
+    useModel.GODCAR001001 = self.model.USEDCAR001003;
+    useModel.GODCAR001005 = self.model.GODCAR001005;
+    vc.model = useModel;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index

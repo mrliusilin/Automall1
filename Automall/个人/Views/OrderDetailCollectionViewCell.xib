@@ -18,22 +18,49 @@
                 <rect key="frame" x="0.0" y="0.0" width="180" height="162"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="13_6750_3096.png" translatesAutoresizingMaskIntoConstraints="NO" id="9NJ-Z2-Usg">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="162"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="选车选中.png" translatesAutoresizingMaskIntoConstraints="NO" id="9NJ-Z2-Usg">
+                        <rect key="frame" x="50" y="4" width="80" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="DHw-io-Tvw"/>
+                            <constraint firstAttribute="width" constant="80" id="HWC-Up-T97"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label Label Label Label Label Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-LN-gcs">
+                        <rect key="frame" x="2" y="52" width="176" height="33.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="O0Z-8A-IJR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxy-1j-t0M">
+                        <rect key="frame" x="2" y="90.5" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="1" green="0.41568627450000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="9NJ-Z2-Usg" secondAttribute="trailing" id="Jn4-Vv-JtK"/>
-                <constraint firstItem="9NJ-Z2-Usg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kcJ-3u-CXT"/>
-                <constraint firstAttribute="bottom" secondItem="9NJ-Z2-Usg" secondAttribute="bottom" id="p2A-5u-v8h"/>
-                <constraint firstItem="9NJ-Z2-Usg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sgr-a9-Yfj"/>
+                <constraint firstItem="9NJ-Z2-Usg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="ART-JS-Uta"/>
+                <constraint firstAttribute="trailing" secondItem="wmb-LN-gcs" secondAttribute="trailing" constant="2" id="Jnc-ii-VMt"/>
+                <constraint firstItem="wmb-LN-gcs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="Xp4-cd-Goa"/>
+                <constraint firstItem="wmb-LN-gcs" firstAttribute="top" secondItem="9NJ-Z2-Usg" secondAttribute="bottom" constant="3" id="Zc3-so-A8Y"/>
+                <constraint firstItem="9NJ-Z2-Usg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="cZP-EL-3ry"/>
+                <constraint firstItem="uxy-1j-t0M" firstAttribute="leading" secondItem="wmb-LN-gcs" secondAttribute="leading" id="kLK-Pb-oir"/>
+                <constraint firstItem="uxy-1j-t0M" firstAttribute="top" secondItem="wmb-LN-gcs" secondAttribute="bottom" constant="5" id="mIP-wc-G2y"/>
             </constraints>
             <size key="customSize" width="180" height="162"/>
-            <point key="canvasLocation" x="99" y="111"/>
+            <connections>
+                <outlet property="imgV" destination="9NJ-Z2-Usg" id="34W-Jg-TMc"/>
+                <outlet property="moneyLB" destination="uxy-1j-t0M" id="3iK-0t-9u1"/>
+                <outlet property="titleLB" destination="wmb-LN-gcs" id="rYD-IA-m1y"/>
+            </connections>
+            <point key="canvasLocation" x="16" y="116"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="13_6750_3096.png" width="512" height="512"/>
+        <image name="选车选中.png" width="22" height="22"/>
     </resources>
 </document>

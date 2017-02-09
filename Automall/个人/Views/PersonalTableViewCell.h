@@ -12,4 +12,6 @@
 
 //@property(nonatomic,strong)UILabel * placeholderLB;
 
+@property(nonatomic,assign)CGFloat titleX;
+
 @end

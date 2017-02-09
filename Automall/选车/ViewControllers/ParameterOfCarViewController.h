@@ -7,7 +7,9 @@
 //
 
 #import "ParentsViewController.h"
-
+#import "NewCarFilterModel.h"
 @interface ParameterOfCarViewController : ParentsViewController
+
+@property(nonatomic,strong)NewCarFilterModel * model;
 
 @end

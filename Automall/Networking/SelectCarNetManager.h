@@ -15,6 +15,8 @@
 
 +(void)getRequestForNewCarsHotBrandseccess:(void(^)(id responseObject))seccess;//新车热门品牌
 
++(void)getRequestForNewCarDetailPrementsWithID:(NSString*)carID seccess:(void(^)(id responseObject))seccess;//新车详情参数
+
 +(void)getRequestForNewCarsHotSeriesWithPage:(NSInteger*)page seccess:(void(^)(id responseObject))seccess;//新车热门车型
 
 +(void)getRequestForOldCarWithFilter:(NSDictionary*)parements Success:(void(^)(id responseObject))success;//二手车条件筛选
@@ -23,9 +25,20 @@
 
 +(void)getRequestForOldCarSeriesWithBrandID:(NSString*)fileterStr Success:(void(^)(id responseObject))success;//二手车车系
 
++(void)getRequestOldCarRecommendSuccess:(void(^)(id responseObject))success;//二手车推荐
+
 +(void)getRequestForNewCarsWithFileterParements:(NSDictionary*)parements Success:(void(^)(id responseObject))success;//新车筛选
 
 +(void)getRequestWithUrlString:(NSString*)urlStr Success:(void(^)(id responseObject))success;
 
 +(void)getRequestForImportCarsWithFileterParements:(NSDictionary*)parements Success:(void(^)(id responseObject))success;//进口车筛选
+
++(void)getRequestImportCarRecommendSuccess:(void(^)(id responseObject))success;
+
++(void)getDetailImgsPre:(NSString*)pre withID:(NSString*)carID Success:(void(^)(id responseObject))success;
+
++(void)getInstallMentRequestMember:(NSString*)ID withType:(NSString*)type Success:(void(^)(id responseObject))success;
+
++(void)postInstallMentRequestWithParements:(NSDictionary*)parements Success:(void(^)(id responseObject))success;
+
 @end

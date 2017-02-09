@@ -13,6 +13,14 @@
 #import "CarFileterViewController.h"
 
 #import "EndSelectedCarViewController.h"
+#import "OldCarRecommendModel.h"
+#import "EndSlectedCarTableViewCell.h"
+#import "OldCarDetailViewController.h"
+
+#import "CarMoneyLevelModel.h"
+#import "CarLevelModel.h"
+#import "OldCarYearModel.h"
+#import "OldCarBrandModel.h"
 
 @interface OldCarViewController ()<SDCycleScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -46,11 +54,30 @@
 
 @property(nonatomic,strong)NSMutableArray<UIView*> * sortTableView;
 
+@property(nonatomic,strong)NSMutableArray * recommendDataArry;
+
+@property(nonatomic,strong)NSMutableArray * quickFindBTs;
+
+@property(nonatomic,strong)NSMutableArray * moneyArray;
+
+@property(nonatomic,strong)NSMutableArray * brandArray;
+
+@property(nonatomic,strong)NSMutableArray * leveArray;
+
+@property(nonatomic,strong)NSMutableArray * yearArray;
+
 @end
 
 @implementation OldCarViewController
 
 #pragma mark -- lazyLoad
+
+//-(NSMutableArray *)moneyArray
+//{
+//    if (<#condition#>) {
+//        <#statements#>
+//    }
+//}
 
 -(NSMutableArray<UIView *> *)sortTableView
 {
@@ -216,6 +243,14 @@
     return _sortButtons;
 }
 
+-(NSMutableArray *)quickFindBTs
+{
+    if (!_quickFindBTs) {
+        _quickFindBTs = @[].mutableCopy;
+    }
+    return _quickFindBTs;
+}
+
 -(void)setupSortButtons
 {
     for (int index = 0; index < self.sortButtons.count; index ++ ) {
@@ -240,15 +275,89 @@
     [self.sortMethodView addSubview:shoMoreBT];
 }
 
+
+-(void)requestTags
+{
+    [SelectCarNetManager getRequestWithUrlString:HTTPOldCarMoneyLevel Success:^(id responseObject) {
+        self.moneyArray = [CarMoneyLevelModel mj_objectArrayWithKeyValuesArray:responseObject];
+        for (int index = 0; index < 5; index ++) {
+            UIButton * bt = self.quickFindBTs[index];
+            CarMoneyLevelModel * model = self.moneyArray[index];
+            [bt setTitle:model.name forState:UIControlStateNormal];
+        }
+//        [self.tableView reloadData];
+    }];
+    
+    [SelectCarNetManager getRequestWithUrlString:HTTPStrOldCarRequestBrand Success:^(id responseObject) {
+        self.brandArray = [OldCarBrandModel mj_objectArrayWithKeyValuesArray:responseObject];
+        for (int index = 5; index < 10; index ++) {
+            UIButton * bt = self.quickFindBTs[index];
+            OldCarBrandModel * model = self.brandArray[index - 5];
+            [bt setTitle:model.name forState:UIControlStateNormal];
+        }
+        //        [self.tableView reloadData];
+    }];
+    
+    [SelectCarNetManager getRequestWithUrlString:HTTPOldCarLevel Success:^(id responseObject) {
+        self.leveArray = [CarLevelModel mj_objectArrayWithKeyValuesArray:responseObject];
+        for (int index = 10; index < 15; index ++) {
+            UIButton * bt = self.quickFindBTs[index];
+            CarLevelModel * model = self.leveArray[index - 10];
+            [bt setTitle:model.name forState:UIControlStateNormal];
+        }
+        //        [self.tableView reloadData];
+    }];
+    [SelectCarNetManager getRequestWithUrlString:HTTPOldCarUsedYear Success:^(id responseObject) {
+        self.yearArray = [OldCarYearModel mj_objectArrayWithKeyValuesArray:responseObject];
+        for (int index = 15; index < 20; index ++) {
+            UIButton * bt = self.quickFindBTs[index];
+            OldCarYearModel * model = self.yearArray[index - 15];
+            [bt setTitle:model.name forState:UIControlStateNormal];
+        }
+        //        [self.tableView reloadData];
+    }];
+}
+
+
 -(void)showMore:(UIButton*)sender
 {
     EndSelectedCarViewController * vc = [[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"EndSelectedCarViewController"];
     [vc setHidesBottomBarWhenPushed:YES];
+    
+    NSInteger index = [self.quickFindBTs indexOfObject:sender];
+    NSInteger V = index / 5;
+    NSInteger H = index % 5;
+    switch (V) {
+        case 0:
+        {
+            CarMoneyLevelModel * model = self.moneyArray[H];
+            vc.prasDic = @{@"price":model.parementID}.mutableCopy;
+        }
+            break;
+        case 1:
+        {
+            OldCarBrandModel * model = self.brandArray[H];
+        }
+            break;
+        case 2:
+        {
+            CarLevelModel * model = self.leveArray[H];
+            vc.prasDic = @{@"g26":model.parementID}.mutableCopy;
+        }
+            break;
+        case 3:
+        {
+            OldCarYearModel * model = self.yearArray[H];
+            vc.prasDic = @{@"year":model.parementID}.mutableCopy;
+        }
+            break;
+        default:
+            break;
+    }
+    
+    
     [self.navigationController pushViewController:vc animated:YES];
     
-//    CarFileterViewController * vc = [CarFileterViewController new];
-//    [vc setHidesBottomBarWhenPushed:YES];
-//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)chageTag:(UIButton*)sender
@@ -274,15 +383,23 @@
         NSMutableArray * arr = self.tagStrs[indexY];
         for (int indxX = 0; indxX < arr.count; indxX ++ ) {
             UIButton * bt = [[UIButton alloc] init];
+            bt.titleLabel.font = [UIFont systemFontOfSize:FONT_SIZE_CONTENT];
             bt.frame = CGRectMake(indxX * (self.tagsView.width + 1)/ arr.count, (36 + 1) * indexY, (self.tagsView.width - arr.count + 1)/ arr.count, 36);
             bt.backgroundColor = [UIColor whiteColor];
             [bt setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
             [bt setTitle:self.tagStrs[indexY][indxX] forState:UIControlStateNormal];
+            [bt addTarget:self action:@selector(showEndSelected:) forControlEvents:UIControlEventTouchUpInside];
             [self.tagsView addSubview:bt];
             height = bt.maxY;
+            [self.quickFindBTs addObject:bt];
         }
     }
     self.tagsView.height = height;
+}
+
+-(void)showEndSelected:(UIButton*)sender
+{
+    [self showMore:sender];
 }
 
 -(void)updateFrame
@@ -318,10 +435,22 @@
     [self updateFrame];
 }
 
+-(void)requestData
+{
+    [SelectCarNetManager getRequestOldCarRecommendSuccess:^(id responseObject) {
+        self.recommendDataArry = [OldCarRecommendModel mj_objectArrayWithKeyValuesArray:responseObject];
+        [self.brandTableView reloadData];
+        [self.defualtTableView reloadData];
+        [self.neTableView reloadData];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
+    [self requestData];
+    [self requestTags];
     // Do any additional setup after loading the view.
 }
 
@@ -345,9 +474,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [UITableViewCell new];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    EndSlectedCarTableViewCell * cell = [[NSBundle mainBundle] loadNibNamed:@"EndSlectedCarTableViewCell" owner:nil options:nil][0];
+    
+    OldCarRecommendModel * model = self.recommendDataArry[indexPath.row];
+    
+    NSString * imgstr = STRADD(HTTPOldCarImageRoot, model.USEDCAR002003);
+    [cell.imgView sd_setImageWithURL:[NSURL URLWithString:imgstr]];
+    cell.titleLB.text = model.GODCAR001005;
+    cell.moneyLB.text = [NSString stringWithFormat:@"%@万",model.USEDCAR001007];
+
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OldCarDetailViewController * vc =[[UIStoryboard storyboardWithName:@"CarMall" bundle:nil] instantiateViewControllerWithIdentifier:@"OldCarDetailViewController"];
+    OldCarRecommendModel * model = self.recommendDataArry[indexPath.row];
+    
+    OldCarFilterModel * useModel = [OldCarFilterModel new];
+    useModel.GODCAR001005 = model.GODCAR001005;
+    useModel.USEDCAR001001 = model.USEDCAR001001.integerValue;
+    useModel.USEDCAR001003 = model.USEDCAR001003.integerValue;
+    useModel.USEDCAR001006 = model.USEDCAR001006.integerValue;
+    useModel.USEDCAR001007 = model.USEDCAR001007;
+    useModel.USEDCAR002003 = model.USEDCAR002003;
+    vc.model = useModel;
+    [vc setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

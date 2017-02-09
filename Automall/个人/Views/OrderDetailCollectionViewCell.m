@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.layer.borderColor = COLOR_TF_BACK_GRAY.CGColor;
+    self.layer.borderWidth = 1;
     // Initialization code
 }
 
